@@ -2,7 +2,6 @@ toOrdinal
 ===========
 
 [![R-CMD-check](https://github.com/CenterForAssessment/toOrdinal/workflows/R-CMD-check/badge.svg)](https://github.com/CenterForAssessment/toOrdinal/actions)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/toOrdinal?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/toOrdinal)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/toOrdinal)](http://cran.r-project.org/package=toOrdinal)
 [![Development Version](https://img.shields.io/badge/devel-1.3--1.0-brightgreen.svg)](https://github.com/CenterForAssessment/toOrdinal)
 [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/toOrdinal/blob/master/LICENSE.md)
