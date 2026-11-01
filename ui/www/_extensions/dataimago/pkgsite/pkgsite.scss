@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.24 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:18ca9b65e75a0517b19dc60ed34ea90637f34369373950da1a19ebe7444fe2be · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.24 dataimago-sync
+// @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:047a1fda4a4fdf8e9f509d4bb835b0021bbf56f5e79815f41b95442c0f01c847 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
 /*-- scss:rules --*/
 // Package-site layer on the dataimago tokens. Colours come only from the token custom
 // properties, so the light/dark pair switches at runtime. Josefin Sans carries headings and
@@ -188,12 +188,13 @@ body:has(.di-landing) #quarto-margin-sidebar { display: none; }
 
 .di-landing-cards {
   display: grid;
-  grid-template-columns: 1fr;
+  // minmax(0, …): a plain 1fr track grows to its widest unbreakable line (a long repo path), past a phone's width.
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-md);
   padding: var(--spacing-xl) var(--spacing-lg);
   background: var(--color-surface-page);
 }
-@media (min-width: 640px) { .di-landing-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 640px) { .di-landing-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 a.di-card {
   display: flex;
@@ -209,7 +210,7 @@ a.di-card {
   &:hover { border-color: var(--color-interactive-primary); background-color: var(--navigation-hover-background); }
   &:focus-visible { outline: 2px solid var(--color-interactive-focus); outline-offset: 2px; }
   .di-card-title { font-family: var(--font-family-display); font-size: 1.15rem; font-weight: var(--font-weight-semibold); }
-  .di-card-desc { color: var(--color-content-secondary); font-size: 0.92rem; }
+  .di-card-desc { color: var(--color-content-secondary); font-size: 0.92rem; overflow-wrap: anywhere; }
 }
 
 // A pinned navbar is fixed over the page, so the pinned hero starts below it. Quarto's headroom script puts a

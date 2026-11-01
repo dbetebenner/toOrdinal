@@ -1,4 +1,4 @@
--- @dataimago/css@0.1.0-alpha.24 dist/quarto/_extensions/dataimago/pkgsite/filters/landing.lua · sha256:62acb5db754e39609ca32197be3c81ec4899ea8637c9ff27621077006b72fb23 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.24 dataimago-sync
+-- @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/filters/landing.lua · sha256:62acb5db754e39609ca32197be3c81ec4899ea8637c9ff27621077006b72fb23 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
 -- landing.lua: replaces the author's `.di-landing` div with the package-site landing stage.
 -- Pandoc 3 Lua filter for Quarto >= 1.8. Metadata comes from `pkgsite` (index.qmd's `metadata-files`
 -- merges the generator's _landing.yml into it). A page with no `.di-landing` div is returned unchanged.
