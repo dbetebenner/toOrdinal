@@ -1,0 +1,181 @@
+/* @dataimago/css@0.1.0-alpha.24 dist/fonts/lang.css · sha256:f6c5232530e667d9e66b6cd7e7dbd4f6132ed96fc4439fdeff814c69727a9281 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.24 dataimago-sync */
+/* House layer: rebind the display variables on the named elements only. */
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(el), :lang(ru), :lang(uk), :lang(bg), :lang(sr), :lang(mk), :lang(be), :lang(kk)) {
+  --font-family-display: "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ar), :lang(fa), :lang(ur)) {
+  --font-family-display: "Noto Sans Arabic", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Arabic", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(he)) {
+  --font-family-display: "Noto Sans Hebrew", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Hebrew", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(hi), :lang(mr), :lang(ne)) {
+  --font-family-display: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(bn)) {
+  --font-family-display: "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ta)) {
+  --font-family-display: "Noto Sans Tamil", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Tamil", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(th)) {
+  --font-family-display: "Noto Sans Thai", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Thai", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(hy)) {
+  --font-family-display: "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ka)) {
+  --font-family-display: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(am)) {
+  --font-family-display: "Noto Sans Ethiopic", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans Ethiopic", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ja)) {
+  --font-family-display: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ko)) {
+  --font-family-display: "Noto Sans KR", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans KR", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG)) {
+  --font-family-display: "Noto Sans SC", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans SC", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)) {
+  --font-family-display: "Noto Sans TC", "Noto Sans", system-ui, sans-serif;
+  --font-family-display-editorial: "Noto Sans TC", "Noto Sans", system-ui, sans-serif;
+}
+
+/* Quarto layer: the theme compiles the heading family as a literal. */
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(el), :lang(ru), :lang(uk), :lang(bg), :lang(sr), :lang(mk), :lang(be), :lang(kk)) {
+  font-family: "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ar), :lang(fa), :lang(ur)) {
+  font-family: "Noto Sans Arabic", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(he)) {
+  font-family: "Noto Sans Hebrew", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(hi), :lang(mr), :lang(ne)) {
+  font-family: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(bn)) {
+  font-family: "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ta)) {
+  font-family: "Noto Sans Tamil", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(th)) {
+  font-family: "Noto Sans Thai", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(hy)) {
+  font-family: "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ka)) {
+  font-family: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(am)) {
+  font-family: "Noto Sans Ethiopic", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ja)) {
+  font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(ko)) {
+  font-family: "Noto Sans KR", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG)) {
+  font-family: "Noto Sans SC", "Noto Sans", system-ui, sans-serif;
+}
+
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)) {
+  font-family: "Noto Sans TC", "Noto Sans", system-ui, sans-serif;
+}
+
+/* Scripts the package does not ship: body text too. */
+:where(:is(:lang(ar), :lang(fa), :lang(ur)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Arabic", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(he)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Hebrew", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(hi), :lang(mr), :lang(ne)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Devanagari", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(bn)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Bengali", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(ta)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Tamil", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(th)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Thai", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(hy)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Armenian", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(ka)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(am)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans Ethiopic", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(ja)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(ko)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans KR", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans SC", "Noto Sans", system-ui, sans-serif;
+}
+
+:where(:is(:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)):not(:is(code, pre, kbd, samp, math, mjx-container, .katex, .MathJax, svg, .navbar-brand, .navbar-title, code *, pre *, kbd *, samp *, math *, mjx-container *, .katex *, .MathJax *, svg *, .navbar-brand *, .navbar-title *))) {
+  font-family: "Noto Sans TC", "Noto Sans", system-ui, sans-serif;
+}

@@ -1,0 +1,12 @@
+{
+  "package": "@dataimago/css",
+  "version": "0.1.0-alpha.24",
+  "outputs": {
+    "quarto/_extensions/dataimago/pkgsite/": "_extensions/dataimago/pkgsite/",
+    "fonts/latin/": "assets/fonts/latin/",
+    "fonts/latin-ext/": "assets/fonts/latin-ext/",
+    "fonts/josefin/": "assets/fonts/josefin/",
+    "fonts/math/": "assets/fonts/math/",
+    "fonts/lang.css": "assets/fonts/"
+  }
+}

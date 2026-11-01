@@ -1,0 +1,26 @@
+---
+title: "Reference"
+toc: false
+---
+
+## Package
+
+::: {.reference-index}
+
+[`toOrdinal-package`](toOrdinal-package.html)
+:   Cardinal to Ordinal Number Conversion
+
+:::
+
+## Functions
+
+::: {.reference-index}
+
+[`toOrdinal()`](toOrdinal.html)
+:   Cardinal to ordinal number conversion function
+
+[`toOrdinalDate()`](toOrdinalDate.html)
+:   Convert date to ordinal calendar date
+
+:::
+

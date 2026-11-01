@@ -1,0 +1,19 @@
+---
+title: "Documentation"
+page-layout: article
+toc: false
+---
+
+::: {.reference-index}
+
+[Get started](../articles/toOrdinal.qmd)
+:   A first tour of toOrdinal
+
+[Articles](../articles/index.qmd)
+:   Guides and longer worked examples
+
+[Cite](../citation.qmd)
+:   How to cite toOrdinal
+
+:::
+
