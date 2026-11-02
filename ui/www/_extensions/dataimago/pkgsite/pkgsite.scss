@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:047a1fda4a4fdf8e9f509d4bb835b0021bbf56f5e79815f41b95442c0f01c847 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
+// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:ec687af7ee83a1d72fcb46baba8e25de02679e8319acc61a57ad553647472b11 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
 /*-- scss:rules --*/
 // Package-site layer on the dataimago tokens. Colours come only from the token custom
 // properties, so the light/dark pair switches at runtime. Josefin Sans carries headings and
@@ -161,10 +161,11 @@ body:has(.di-landing) #quarto-margin-sidebar { display: none; }
   gap: var(--spacing-xl);
   margin: 0;
 }
-.di-landing-intro { order: 1; padding: var(--spacing-2xl) var(--spacing-lg) 0; }
-.di-landing-hero { order: 2; max-height: 50vh; overflow: hidden; }
-.di-landing-overview { order: 3; padding-inline: var(--spacing-lg); }
-.di-landing-cards { order: 4; }
+.di-landing-stage { display: flex; flex-direction: column; gap: var(--spacing-xl); }
+.di-landing-intro { padding: var(--spacing-2xl) var(--spacing-lg) 0; }
+.di-landing-hero { max-height: 50vh; overflow: hidden; }
+.di-landing-overview { padding-inline: var(--spacing-lg); }
+.di-landing-panel > * { max-width: 72ch; }
 
 .di-landing-hero svg, .di-landing-hero img { display: block; width: 100%; height: 100%; max-height: 50vh; object-fit: contain; }
 .di-hero-mount { width: 100%; height: 100%; }
@@ -218,50 +219,61 @@ a.di-card {
 // apart. On a landing page the navbar is given a floor of 4rem (Quarto's own body padding-top is 64px) so the
 // offset is exact; every other page keeps Quarto's natural navbar height.
 
-// The wipe: only with motion allowed and room for a pinned stage.
+// The wipe: only with motion allowed and room for a pinned stage. Only the hero pins (left 70%); the intro (name,
+// title, links and the pause control) stays in normal flow on the right, so no panel ever covers the pause label
+// (WCAG 2.2.2, decision 6). Each README panel slides up over the pinned hero, and a panel the filter marked --fits
+// also pins so the next slides over it. The stage and overview wrappers are display: contents here, so the hero,
+// the panels and the cards share .di-landing as their containing block and stack.
 @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) and (min-height: 780px) {
-  .di-landing {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    grid-template-rows: auto auto auto;
-    gap: 0;
-  }
-  .di-landing-hero {
-    grid-column: 1;
-    grid-row: 1 / 4;
-    position: sticky;
-    top: 0;
-    height: 100dvh;
-    max-height: none;
-    align-self: start;
-  }
+  .di-landing { display: block; gap: 0; }
+  .di-landing-stage { display: contents; }
   body:has(.di-landing) #quarto-header .navbar { min-height: 4rem; }
   // Pinned navbar: start below it (a new custom property would extend the frozen CSS-variable contract).
-  body.nav-fixed:has(#quarto-header:not([class*="headroom--"])) .di-landing-hero {
-    top: 4rem;
-    height: calc(100dvh - 4rem);
+  body.nav-fixed:has(#quarto-header:not([class*="headroom--"])) {
+    .di-landing-hero, .di-landing-panel--fits { top: 4rem; }
+    .di-landing-hero { height: calc(100dvh - 4rem); margin-top: calc(4rem - 100dvh); }
+    .di-landing-intro, .di-landing-panel, .di-landing-cards { min-height: calc(100dvh - 4rem); }
+  }
+  // The intro comes first in the DOM (reading order); the hero is pulled up beside it with a negative margin and pins.
+  .di-landing-hero {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    width: 70%;
+    height: 100dvh;
+    margin-top: -100dvh;
+    max-height: none;
   }
   .di-landing-hero svg, .di-landing-hero img { max-height: none; }
   .di-landing-intro {
-    grid-column: 2;
-    grid-row: 1;
+    margin-left: 70%;
     min-height: 100dvh;
+    box-sizing: border-box;
     padding: 0 var(--spacing-xl);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .di-landing-overview { grid-column: 2; grid-row: 2; padding: var(--spacing-xl); }
-  .di-landing-cards {
-    grid-column: 1 / -1;
-    grid-row: 3;
+  .di-landing-overview { display: contents; }
+  .di-landing-panel, .di-landing-cards {
     position: relative;
     z-index: 1;
     min-height: 100dvh;
-    align-content: center;
-    padding: var(--spacing-3xl) var(--spacing-xl);
     background: var(--color-surface-page);
     box-shadow: var(--shadow-prominent);
+  }
+  // Content starts at the panel's leading edge, under a rule, so an arriving panel reads as the next section
+  // sliding up (centred content left an invisible edge: an empty band of page colour over the previous panel).
+  .di-landing-panel {
+    padding: var(--spacing-2xl) max(var(--spacing-xl), calc((100% - 72ch) / 2)) var(--spacing-3xl);
+    border-top: 1px solid var(--color-border-moderate);
+  }
+  .di-landing-panel--fits { position: sticky; top: 0; }
+  // The panel's padding already sets the gap under its rule; the leading heading's own margin would double it.
+  .di-landing .di-landing-panel > :first-child { margin-top: 0; }
+  .di-landing-cards {
+    align-content: center;
+    padding: var(--spacing-3xl) var(--spacing-xl);
   }
 }
 

@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/components.scss · sha256:a2b35c50f5dc36aa4cf337e7ff5ea4ec758890c6910776f5a3e1deb31ad44dd4 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
+// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/components.scss · sha256:107753a0f0bc2903214d5232691442f583252ee48e12158e1da7c63c267c2931 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
 /*-- scss:rules --*/
 // dataimago components (.di-*) — generated from src/styles/components/.
 .di-figure-box {
@@ -50,8 +50,8 @@
   max-width: 95vw;
   max-height: 95vh;
   object-fit: contain;
-  border: 2px solid var(--color-interactive-primary);
-  background-color: var(--color-surface-elevated);
+  border: 2px solid var(--color-border-figure-frame, var(--color-interactive-primary));
+  background-color: var(--color-surface-figure-plate, var(--color-surface-elevated));
   padding: 8px;
   box-shadow: 0 20px 60px color-mix(in srgb, var(--color-content-primary) 40%, transparent);
 }
@@ -127,7 +127,6 @@
   }
 }
 
-@charset "UTF-8";
 .di-callout, .proof, .theorem, .definition, .proposition {
   padding: var(--spacing-md, 1rem) var(--spacing-md, 1rem) var(--spacing-md, 1rem) var(--spacing-lg, 1.5rem);
   margin: var(--spacing-lg, 1.5rem) 0;
@@ -230,9 +229,9 @@
 }
 
 figure img.box, p img.box {
-  border: 1px solid var(--color-content-secondary);
+  border: 1px solid var(--color-border-figure-frame, var(--color-content-secondary));
   padding: 4px;
-  background-color: var(--color-surface-elevated);
+  background-color: var(--color-surface-figure-plate, var(--color-surface-elevated));
 }
 
 .pkg {

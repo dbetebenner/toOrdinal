@@ -1,10 +1,14 @@
--- @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/filters/landing.lua · sha256:62acb5db754e39609ca32197be3c81ec4899ea8637c9ff27621077006b72fb23 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
+-- @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/filters/landing.lua · sha256:38f65215f060ced7cadbdadf256345cf59077d3f79908afaa116fee368f4cd13 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
 -- landing.lua: replaces the author's `.di-landing` div with the package-site landing stage.
 -- Pandoc 3 Lua filter for Quarto >= 1.8. Metadata comes from `pkgsite` (index.qmd's `metadata-files`
 -- merges the generator's _landing.yml into it). A page with no `.di-landing` div is returned unchanged.
 --
--- DOM order: pause control, then div.di-landing holding div.di-landing-intro, div.di-landing-overview (the
--- author's content, still Pandoc blocks), div.di-landing-hero[aria-hidden], nav.di-landing-cards.
+-- DOM order: pause control, then div.di-landing holding div.di-landing-stage (div.di-landing-intro, then
+-- div.di-landing-hero[aria-hidden]), div.di-landing-overview (the author's content, still Pandoc blocks, split into
+-- div.di-landing-panel at its top heading level), nav.di-landing-cards.
+-- The panels are the stacked wipe: with motion allowed, each slides up over the pinned stage. A panel the filter
+-- estimates fits one screen is also pinned (class di-landing-panel--fits), so the next slides over it; a longer
+-- panel scrolls in normal flow, so no content is ever hidden under the next one.
 -- The stage, the intro and the overview are real Pandoc Div nodes, never raw open/close tags around Pandoc
 -- content: Quarto's section-divs wraps every heading in <section>, and a section swallows a raw closing tag
 -- that follows it (a README's `##` headings put the hero and the cards inside the overview).
@@ -177,10 +181,82 @@ local function hero_html(hero)
   return open .. (body and clean_svg(body) or '') .. '</div>'
 end
 
+-- A rough line count of blocks at the panel's reading measure (about 80 characters a line). It only decides
+-- whether a panel may pin; it errs long, since a pinned panel taller than the screen would hide its end.
+-- True when any inline, at any depth (a linked screenshot is Link -> Image), is an Image.
+local function has_image(inlines)
+  local found = false
+  pandoc.Inlines(inlines):walk({
+    Image = function() found = true end,
+    -- README HTML (<img align="right" …>, an embedded <svg>, <video>, <iframe>) arrives as a RawInline
+    RawInline = function(r)
+      local t = r.text:lower()
+      if t:find('<img', 1, true) or t:find('<svg', 1, true) or t:find('<video', 1, true) or t:find('<iframe', 1, true) then found = true end
+    end,
+  })
+  return found
+end
+
+local function estimate_lines(blocks)
+  local n = 0
+  for _, b in ipairs(blocks) do
+    local t = b.t
+    if t == 'Header' then n = n + 2.5
+    elseif t == 'Para' or t == 'Plain' then n = n + math.ceil(#stringify(b) / 80) + 0.6
+    elseif t == 'CodeBlock' then n = n + select(2, b.text:gsub('\n', '')) + 2.5
+    elseif t == 'BulletList' or t == 'OrderedList' then
+      for _, item in ipairs(b.content) do n = n + math.max(1, estimate_lines(item)) end
+      n = n + 0.6
+    elseif t == 'BlockQuote' or t == 'Div' then n = n + estimate_lines(b.content) + 1
+    elseif t == 'DefinitionList' then
+      for _, item in ipairs(b.content) do
+        n = n + 1
+        for _, def in ipairs(item[2]) do n = n + estimate_lines(def) end
+      end
+    -- replaced or raw content, and tables (cells wrap at the panel measure): height unknown, so never pin
+    elseif t == 'Figure' or t == 'RawBlock' or t == 'Table' then n = n + 100
+    else n = n + 4 end
+    -- an image's rendered height is unknown, so a panel holding one anywhere (a paragraph, a table cell, a list
+    -- item, a heading) never pins, like a Figure
+    local img = false
+    pandoc.Blocks({ b }):walk({
+      Image = function() img = true end,
+      RawInline = function(r) if has_image({ r }) then img = true end end,
+    })
+    if img then n = n + 100 end
+  end
+  return n
+end
+local PANEL_FIT_LINES = 18
+
+-- Split the overview at its top heading level: each heading of that level starts a panel; blocks before the first
+-- heading form a panel of their own.
+local function panels(blocks)
+  local top = nil
+  for _, b in ipairs(blocks) do
+    if b.t == 'Header' and (top == nil or b.level < top) then top = b.level end
+  end
+  local out, cur = pandoc.List(), pandoc.List()
+  local function flush()
+    if #cur == 0 then return end
+    local cls = { 'di-landing-panel' }
+    if estimate_lines(cur) <= PANEL_FIT_LINES then cls[#cls + 1] = 'di-landing-panel--fits' end
+    out:insert(pandoc.Div(cur, pandoc.Attr('', cls)))
+    cur = pandoc.List()
+  end
+  for _, b in ipairs(blocks) do
+    if top and b.t == 'Header' and b.level == top then flush() end
+    cur:insert(b)
+  end
+  flush()
+  return out
+end
+
 local function build(div, meta)
   local p = meta.pkgsite or {}
   local out = pandoc.List()
   local stage = pandoc.List()
+  local front = pandoc.List() -- the pinned stage: intro (name, title) and hero
   local function raw(s) stage:insert(pandoc.RawBlock('html', s)) end
 
   local label = '<label class="di-hero-pause-label" for="di-hero-pause">'
@@ -206,18 +282,18 @@ local function build(div, meta)
       iraw('</ul>')
     end
     iraw('<p class="di-hero-pause">' .. label .. '</p>')
-    stage:insert(pandoc.Div(intro, pandoc.Attr('', { 'di-landing-intro' })))
+    front:insert(pandoc.Div(intro, pandoc.Attr('', { 'di-landing-intro' })))
   else
-    raw('<div class="di-landing-controls"><p class="di-hero-pause">' .. label .. '</p></div>')
+    front:insert(pandoc.RawBlock('html', '<div class="di-landing-controls"><p class="di-hero-pause">' .. label .. '</p></div>'))
   end
+  front:insert(pandoc.RawBlock('html', hero_html(p.hero)))
+  stage:insert(pandoc.Div(front, pandoc.Attr('', { 'di-landing-stage' })))
 
   local content = nil
   for _, b in ipairs(div.content) do
     if b.t == 'Div' and b.classes:includes('di-landing-overview') then content = b.content end
   end
-  stage:insert(pandoc.Div(content or div.content, pandoc.Attr('', { 'di-landing-overview' })))
-
-  raw(hero_html(p.hero))
+  stage:insert(pandoc.Div(panels(content or div.content), pandoc.Attr('', { 'di-landing-overview' })))
 
   local cards = list(p.cards)
   if #cards > 0 then raw('<nav class="di-landing-cards" aria-label="Sections">') end
