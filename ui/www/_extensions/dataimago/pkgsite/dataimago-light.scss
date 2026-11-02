@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:3ae606eaa8d7f3d4038166cd594e740e5f8e7c8865ed7999e8bf2c33c25346d5 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
+// @dataimago/css@0.1.0-alpha.29 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:8a5a3f9d25355424e950921e1026e1fcbe8094e924c0db6b1bbd31ac1b01e0c1 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.29 dataimago-sync
 // dataimago light theme for Quarto 1.8 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -14,7 +14,7 @@ $code-bg: #faf2e3 !default;
 $border-color: #888785 !default;
 $font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
-$headings-font-family: Josefin Sans, Noto Sans, system-ui, sans-serif !default;
+$headings-font-family: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $headings-font-weight: 500 !default;
 $h2-font-size: 1.875rem !default;
 $web-font-path: false !default;
@@ -89,8 +89,8 @@ $web-font-path: false !default;
   --font-family-sans: Noto Sans, Noto Sans Math, system-ui, sans-serif;
   --font-family-mono: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace;
   --font-family-display: var(--font-family-display-editorial);
-  --font-family-display-editorial: Josefin Sans, Noto Sans, system-ui, sans-serif;
-  --font-family-display-documentation: Noto Sans, system-ui, sans-serif;
+  --font-family-display-editorial: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif;
+  --font-family-display-documentation: Noto Sans, Noto Sans Math, system-ui, sans-serif;
   --font-family-brand: Futura, system-ui, sans-serif;
   --font-family-math: Noto Sans Math, math;
   --font-size-micro: 0.75rem;
