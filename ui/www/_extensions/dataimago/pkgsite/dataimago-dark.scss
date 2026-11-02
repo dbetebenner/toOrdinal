@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:f857888d73961ee714eea97a162915d1f3c28fa740fc88bf3a68e8728594d274 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
+// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:17cf28b6c802d9db24d079728b3c1e5ae976f1209f88aa1445d850136ff40fe6 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
 // dataimago dark theme for Quarto 1.8 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -12,7 +12,7 @@ $link-hover-color: #7e8a6b !default;
 $code-color: #3498db !default;
 $code-bg: #1c1917 !default;
 $border-color: #7d7b76 !default;
-$font-family-sans-serif: Noto Sans, Fira Sans, system-ui, sans-serif !default;
+$font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
 $headings-font-family: Josefin Sans, Noto Sans, system-ui, sans-serif !default;
 $headings-font-weight: 500 !default;
@@ -86,7 +86,7 @@ $web-font-path: false !default;
   --transition-standard: 0.25s ease-in-out;
   --transition-smooth: 0.35s ease;
   --transition-logo: 0.3s;
-  --font-family-sans: Noto Sans, Fira Sans, system-ui, sans-serif;
+  --font-family-sans: Noto Sans, Noto Sans Math, system-ui, sans-serif;
   --font-family-mono: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace;
   --font-family-display: var(--font-family-display-editorial);
   --font-family-display-editorial: Josefin Sans, Noto Sans, system-ui, sans-serif;
@@ -153,6 +153,11 @@ $web-font-path: false !default;
   --color-dataviz-categorical-5: #0072B2;
   --color-dataviz-categorical-6: #D55E00;
   --color-dataviz-categorical-7: #CC79A7;
+  --color-dataviz-sgpc-bucket-very-low: #D55E00;
+  --color-dataviz-sgpc-bucket-low: #E69F00;
+  --color-dataviz-sgpc-bucket-typical: #56B4E9;
+  --color-dataviz-sgpc-bucket-high: #009E73;
+  --color-dataviz-sgpc-bucket-very-high: #0072B2;
 }
 
 :root, body.quarto-dark, [data-bs-theme="dark"] {
@@ -162,6 +167,8 @@ $web-font-path: false !default;
   --color-surface-page-scrolled: color(display-p3 0.0784 0.0784 0.0643);
   --color-surface-elevated: #1c1917;
   --color-surface-elevated: color(display-p3 0.1078 0.0985 0.0911);
+  --color-surface-figure-plate: #dcdcda;
+  --color-surface-figure-plate: color(display-p3 0.8627 0.8627 0.8556);
   --color-surface-sunken: #0c0a09;
   --color-surface-sunken: color(display-p3 0.0457 0.0395 0.0358);
   --color-surface-navbar: #141410;
@@ -178,6 +185,8 @@ $web-font-path: false !default;
   --color-border-strong: color(display-p3 0.9894 0.977 0.9518 / 0.75);
   --color-border-card: rgba(253, 249, 242, 0.60);
   --color-border-card: color(display-p3 0.9894 0.977 0.9518 / 0.60);
+  --color-border-figure-frame: #6a6a6a;
+  --color-border-figure-frame: color(display-p3 0.4157 0.4157 0.4157);
   --color-border-code: #292524;
   --color-border-code: color(display-p3 0.1581 0.1456 0.1418);
   --color-content-primary: #fdf9f2;
@@ -306,7 +315,7 @@ pre, div.sourceCode {
 
 body.quarto-dark figure img.box,
 body.quarto-dark p img.box {
-  background-color: #f7f7f6;
+  background-color: #dcdcda;
   border-color: #6a6a6a;
 }
 

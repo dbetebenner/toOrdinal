@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:e456b3e8cfaa03df7fe5ac29bb6e8288454ee5daab29ff6470c45a12ff8d3f32 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync
+// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:3ae606eaa8d7f3d4038166cd594e740e5f8e7c8865ed7999e8bf2c33c25346d5 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
 // dataimago light theme for Quarto 1.8 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -12,7 +12,7 @@ $link-hover-color: #363a2e !default;
 $code-color: #1f618d !default;
 $code-bg: #faf2e3 !default;
 $border-color: #888785 !default;
-$font-family-sans-serif: Noto Sans, Fira Sans, system-ui, sans-serif !default;
+$font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
 $headings-font-family: Josefin Sans, Noto Sans, system-ui, sans-serif !default;
 $headings-font-weight: 500 !default;
@@ -86,7 +86,7 @@ $web-font-path: false !default;
   --transition-standard: 0.25s ease-in-out;
   --transition-smooth: 0.35s ease;
   --transition-logo: 0.3s;
-  --font-family-sans: Noto Sans, Fira Sans, system-ui, sans-serif;
+  --font-family-sans: Noto Sans, Noto Sans Math, system-ui, sans-serif;
   --font-family-mono: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace;
   --font-family-display: var(--font-family-display-editorial);
   --font-family-display-editorial: Josefin Sans, Noto Sans, system-ui, sans-serif;
@@ -153,6 +153,11 @@ $web-font-path: false !default;
   --color-dataviz-categorical-5: #0072B2;
   --color-dataviz-categorical-6: #D55E00;
   --color-dataviz-categorical-7: #CC79A7;
+  --color-dataviz-sgpc-bucket-very-low: #D55E00;
+  --color-dataviz-sgpc-bucket-low: #E69F00;
+  --color-dataviz-sgpc-bucket-typical: #56B4E9;
+  --color-dataviz-sgpc-bucket-high: #009E73;
+  --color-dataviz-sgpc-bucket-very-high: #0072B2;
 }
 
 :root, [data-bs-theme="light"] {
@@ -162,6 +167,8 @@ $web-font-path: false !default;
   --color-surface-page-scrolled: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-elevated: #f7f7f6;
   --color-surface-elevated: color(display-p3 0.9686 0.9686 0.9651);
+  --color-surface-figure-plate: #f7f7f6;
+  --color-surface-figure-plate: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-sunken: #faf2e3;
   --color-surface-sunken: color(display-p3 0.9749 0.9501 0.8963);
   --color-surface-navbar: #ededeb;
@@ -178,6 +185,8 @@ $web-font-path: false !default;
   --color-border-strong: color(display-p3 0.0457 0.0395 0.0358 / 0.75);
   --color-border-card: rgba(12, 10, 9, 0.60);
   --color-border-card: color(display-p3 0.0457 0.0395 0.0358 / 0.60);
+  --color-border-figure-frame: #6a6a6a;
+  --color-border-figure-frame: color(display-p3 0.4157 0.4157 0.4157);
   --color-border-code: #d6d3d1;
   --color-border-code: color(display-p3 0.8371 0.8278 0.8205);
   --color-content-primary: #14140f;
