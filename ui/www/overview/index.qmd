@@ -1,0 +1,10 @@
+---
+title: "Overview"
+page-layout: article
+toc: false
+---
+
+The overview of toOrdinal — why it exists, the ideas behind it and how it works — is being written.
+
+In the meantime, see the [Documentation](../documentation/index.qmd) or the [API](../reference/index.qmd).
+

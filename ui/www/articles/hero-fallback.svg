@@ -1,0 +1,53 @@
+<!-- @dataimago/css@0.1.0-alpha.25 dist/quarto/_extensions/dataimago/pkgsite/hero-fallback.svg · sha256:60a284fe66f799d46a383ddaba18712ac896aa05cece9b77d28f56e0767309f3 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.25 dataimago-sync -->
+<svg class="di-hero-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" focusable="false">
+<style>
+.di-hero-fallback { display: block; width: 100%; height: 100%; }
+.di-hero-fallback .axis { stroke: var(--color-border-moderate, #8a8a85); stroke-width: 2; fill: none; stroke-linecap: round; }
+.di-hero-fallback .grid { stroke: var(--color-border-subtle, #c9c9c4); stroke-width: 1; fill: none; }
+.di-hero-fallback .curve { fill: none; stroke-width: 5; stroke-linecap: round; }
+.di-hero-fallback .c1 { stroke: var(--color-interactive-primary, #1d3b2f); }
+.di-hero-fallback .c2 { stroke: var(--color-dataviz-categorical-1, #0072b2); }
+.di-hero-fallback .c3 { stroke: var(--color-dataviz-categorical-2, #d55e00); }
+.di-hero-fallback .c4 { stroke: var(--color-dataviz-categorical-3, #009e73); }
+.di-hero-fallback .c5 { stroke: var(--color-dataviz-categorical-5, #0072b2); }
+.di-hero-fallback .c6 { stroke: var(--color-interactive-accent, #b45f06); }
+.di-hero-fallback .c7 { stroke: var(--color-content-secondary, #5b5b57); stroke-width: 3; }
+.di-hero-fallback .dot { stroke: none; }
+.di-hero-fallback .d1 { fill: var(--color-interactive-primary, #1d3b2f); }
+.di-hero-fallback .d3 { fill: var(--color-dataviz-categorical-2, #d55e00); }
+.di-hero-fallback .d5 { fill: var(--color-dataviz-categorical-5, #0072b2); }
+@media (prefers-reduced-motion: no-preference) {
+  .di-hero-fallback .curve {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation-name: di-hero-draw;
+    animation-duration: 2400ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 3;
+    animation-fill-mode: both;
+  }
+  .di-hero-fallback .c2 { animation-delay: 120ms; }
+  .di-hero-fallback .c3 { animation-delay: 240ms; }
+  .di-hero-fallback .c4 { animation-delay: 360ms; }
+  .di-hero-fallback .c5 { animation-delay: 480ms; }
+  .di-hero-fallback .c6 { animation-delay: 600ms; }
+  .di-hero-fallback .c7 { animation-delay: 720ms; }
+  @keyframes di-hero-draw {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+}
+</style>
+<path class="grid" d="M80 560H720M80 400H720M80 240H720M80 80H720"/>
+<path class="axis" d="M80 80V720H720"/>
+<path class="curve c7" pathLength="1" d="M80 720C240 716 400 690 720 640"/>
+<path class="curve c6" pathLength="1" d="M80 720C230 700 400 640 720 520"/>
+<path class="curve c5" pathLength="1" d="M80 720C220 690 400 590 720 410"/>
+<path class="curve c4" pathLength="1" d="M80 720C210 670 390 540 720 310"/>
+<path class="curve c3" pathLength="1" d="M80 720C190 640 370 470 720 210"/>
+<path class="curve c2" pathLength="1" d="M80 720C170 600 340 400 720 140"/>
+<path class="curve c1" pathLength="1" d="M80 720C150 560 300 330 720 90"/>
+<circle class="dot d1" cx="720" cy="90" r="9"/>
+<circle class="dot d3" cx="720" cy="210" r="7"/>
+<circle class="dot d5" cx="720" cy="410" r="7"/>
+</svg>

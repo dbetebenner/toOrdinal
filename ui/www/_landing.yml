@@ -1,0 +1,35 @@
+pkgsite:
+  name: toOrdinal
+  title: Cardinal to Ordinal Number & Date Conversion
+  version: 1.3-9.1
+  hero:
+    kind: fallback
+    alt: Animated illustration for toOrdinal
+  links:
+    - text: GitHub
+      href: https://github.com/centerforassessment/toOrdinal
+    - text: CRAN
+      href: https://cran.r-project.org/package=toOrdinal
+    - text: Issues
+      href: https://github.com/centerforassessment/toOrdinal/issues/
+  cards:
+    - key: overview
+      title: Overview
+      href: overview/index.qmd
+      desc: Why toOrdinal exists and how it works
+    - key: documentation
+      title: Documentation
+      href: documentation/index.qmd
+      desc: 6 articles; start with Getting started with toOrdinal
+    - key: api
+      title: API
+      href: reference/index.qmd
+      desc: 2 functions, 0 data sets
+    - key: news
+      title: What's new
+      href: news.qmd
+      desc: toOrdinal 1.3-0.0
+    - key: source
+      title: Source
+      href: https://github.com/centerforassessment/toOrdinal
+      desc: github.com/centerforassessment/toOrdinal
