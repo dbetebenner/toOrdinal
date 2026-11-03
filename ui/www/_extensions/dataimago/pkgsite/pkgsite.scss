@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.27 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:ec687af7ee83a1d72fcb46baba8e25de02679e8319acc61a57ad553647472b11 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.27 dataimago-sync
+// @dataimago/css@0.1.0-alpha.29 dist/quarto/_extensions/dataimago/pkgsite/pkgsite.scss · sha256:3ab060b9f9bf78e4e9114f9cf6d35de65302ae8dff3d9e50b5554276d9cc0807 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.29 dataimago-sync
 /*-- scss:rules --*/
 // Package-site layer on the dataimago tokens. Colours come only from the token custom
 // properties, so the light/dark pair switches at runtime. Josefin Sans carries headings and
@@ -219,18 +219,19 @@ a.di-card {
 // apart. On a landing page the navbar is given a floor of 4rem (Quarto's own body padding-top is 64px) so the
 // offset is exact; every other page keeps Quarto's natural navbar height.
 
-// The wipe: only with motion allowed and room for a pinned stage. Only the hero pins (left 70%); the intro (name,
+// The wipe: only with motion allowed and room for a pinned stage (from 600px tall, so a laptop window gets it). Only the
+// hero pins (left 70%); the intro (name,
 // title, links and the pause control) stays in normal flow on the right, so no panel ever covers the pause label
 // (WCAG 2.2.2, decision 6). Each README panel slides up over the pinned hero, and a panel the filter marked --fits
 // also pins so the next slides over it. The stage and overview wrappers are display: contents here, so the hero,
 // the panels and the cards share .di-landing as their containing block and stack.
-@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) and (min-height: 780px) {
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) and (min-height: 600px) {
   .di-landing { display: block; gap: 0; }
   .di-landing-stage { display: contents; }
   body:has(.di-landing) #quarto-header .navbar { min-height: 4rem; }
   // Pinned navbar: start below it (a new custom property would extend the frozen CSS-variable contract).
   body.nav-fixed:has(#quarto-header:not([class*="headroom--"])) {
-    .di-landing-hero, .di-landing-panel--fits { top: 4rem; }
+    .di-landing-hero { top: 4rem; }
     .di-landing-hero { height: calc(100dvh - 4rem); margin-top: calc(4rem - 100dvh); }
     .di-landing-intro, .di-landing-panel, .di-landing-cards { min-height: calc(100dvh - 4rem); }
   }
@@ -243,8 +244,13 @@ a.di-card {
     height: 100dvh;
     margin-top: -100dvh;
     max-height: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .di-landing-hero svg, .di-landing-hero img { max-height: none; }
+  // The art sits centred in the pinned column, at most 62% of the screen tall, rather than filling it.
+  .di-landing-hero svg, .di-landing-hero img { max-height: min(62dvh, 36rem); }
+  .di-landing-hero .di-hero-mount { max-height: min(62dvh, 36rem); }
   .di-landing-intro {
     margin-left: 70%;
     min-height: 100dvh;
@@ -268,7 +274,12 @@ a.di-card {
     padding: var(--spacing-2xl) max(var(--spacing-xl), calc((100% - 72ch) / 2)) var(--spacing-3xl);
     border-top: 1px solid var(--color-border-moderate);
   }
-  .di-landing-panel--fits { position: sticky; top: 0; }
+  // A panel the filter marked --fits pins only from 780px tall, the height estimate_lines is calibrated for; on a
+  // shorter screen every panel scrolls in flow, so none can hide its end under the next.
+  @media (min-height: 780px) {
+    .di-landing-panel--fits { position: sticky; top: 0; }
+    body.nav-fixed:has(#quarto-header:not([class*="headroom--"])) .di-landing-panel--fits { top: 4rem; }
+  }
   // The panel's padding already sets the gap under its rule; the leading heading's own margin would double it.
   .di-landing .di-landing-panel > :first-child { margin-top: 0; }
   .di-landing-cards {
