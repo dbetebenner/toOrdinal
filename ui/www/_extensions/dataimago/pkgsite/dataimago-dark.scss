@@ -1,5 +1,5 @@
-// @dataimago/css@0.1.0-alpha.29 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:8327acc946cc45119cd7c18c90f83d7aacdd7e53a8ef5773274d0008134dc1f0 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.29 dataimago-sync
-// dataimago dark theme for Quarto 1.8 — generated from the design tokens (tools/formats/quarto.mjs).
+// @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:bf36a02c8638919ef77fd32d6decf39652e6ddde8183a9742ff01cb256901259 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync
+// dataimago dark theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
 /*-- scss:defaults --*/
@@ -11,7 +11,19 @@ $link-color: #98a384 !default;
 $link-hover-color: #7e8a6b !default;
 $code-color: #3498db !default;
 $code-bg: #1c1917 !default;
+$pre-color: #fdf9f2 !default;
 $border-color: #7d7b76 !default;
+$primary: #98a384 !default;
+$secondary: #a8a29e !default;
+$success: #009e73 !default;
+$info: #3498db !default;
+$warning: #e69f00 !default;
+$danger: #ef5350 !default;
+$callout-color-note: #3498db !default;
+$callout-color-tip: #009e73 !default;
+$callout-color-important: #ef5350 !default;
+$callout-color-caution: #e69f00 !default;
+$callout-color-warning: #e69f00 !default;
 $font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
 $headings-font-family: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
@@ -78,9 +90,9 @@ $web-font-path: false !default;
   --color-palette-presentation-blue-500: #3498DB;
   --color-palette-presentation-blue-600: #2980B9;
   --color-palette-presentation-blue-700: #1f618d;
-  --color-functional-success: #27AE60;
-  --color-functional-warning: #F39C12;
-  --color-functional-error: #E74C3C;
+  --color-functional-success: #009E73;
+  --color-functional-warning: #E69F00;
+  --color-functional-error: #ef5350;
   --color-functional-info: #3498DB;
   --transition-quick: 0.15s ease;
   --transition-standard: 0.25s ease-in-out;
@@ -205,6 +217,14 @@ $web-font-path: false !default;
   --color-interactive-accent: color(display-p3 0.3208 0.588 0.8369);
   --color-interactive-focus: #98a384;
   --color-interactive-focus: color(display-p3 0.604 0.6378 0.5291);
+  --color-state-success: #009e73;
+  --color-state-success: color(display-p3 0.2733 0.6102 0.4624);
+  --color-state-warning: #e69f00;
+  --color-state-warning: color(display-p3 0.861 0.6354 0.2169);
+  --color-state-error: #ef5350;
+  --color-state-error: color(display-p3 0.8678 0.3692 0.339);
+  --color-state-info: #3498db;
+  --color-state-info: color(display-p3 0.3208 0.588 0.8369);
   --color-presentation-accent: #3498db;
   --color-presentation-accent: color(display-p3 0.3208 0.588 0.8369);
   --color-presentation-accent-hover: #2980b9;
@@ -281,6 +301,13 @@ main.content :is(p, li, dd, td, blockquote, figcaption, .callout-body) a:hover {
 pre, div.sourceCode {
   background-color: var(--color-surface-code);
   border: 1px solid var(--color-border-code);
+}
+
+// Unhighlighted blocks (fenced text, chunk output) take Bootstrap's pre colour, which Quarto compiles to #000:
+// invisible on the dark card. A bare element selector, so the syntax-highlighting sheet still colours
+// highlighted blocks (2026-11-03).
+pre {
+  color: var(--color-content-primary);
 }
 
 // Quarto themes its popups as [data-theme~="quarto"] at compile time ($body-bg);
