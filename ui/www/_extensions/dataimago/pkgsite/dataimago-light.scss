@@ -1,5 +1,5 @@
-// @dataimago/css@0.1.0-alpha.29 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:8a5a3f9d25355424e950921e1026e1fcbe8094e924c0db6b1bbd31ac1b01e0c1 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.29 dataimago-sync
-// dataimago light theme for Quarto 1.8 — generated from the design tokens (tools/formats/quarto.mjs).
+// @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:b381b085e31ef00f14726e4482625e89d10847f7aebcdcc91f030b556c11b64c · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync
+// dataimago light theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
 /*-- scss:defaults --*/
@@ -10,8 +10,20 @@ $navbar-bg: #ededeb !default;
 $link-color: #434739 !default;
 $link-hover-color: #363a2e !default;
 $code-color: #1f618d !default;
-$code-bg: #faf2e3 !default;
+$code-bg: #f7f7f6 !default;
+$pre-color: #14140f !default;
 $border-color: #888785 !default;
+$primary: #434739 !default;
+$secondary: #6a6a6a !default;
+$success: #007a58 !default;
+$info: #1f618d !default;
+$warning: #906306 !default;
+$danger: #a4262c !default;
+$callout-color-note: #1f618d !default;
+$callout-color-tip: #007a58 !default;
+$callout-color-important: #a4262c !default;
+$callout-color-caution: #906306 !default;
+$callout-color-warning: #906306 !default;
 $font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
 $font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
 $headings-font-family: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
@@ -78,9 +90,9 @@ $web-font-path: false !default;
   --color-palette-presentation-blue-500: #3498DB;
   --color-palette-presentation-blue-600: #2980B9;
   --color-palette-presentation-blue-700: #1f618d;
-  --color-functional-success: #27AE60;
-  --color-functional-warning: #F39C12;
-  --color-functional-error: #E74C3C;
+  --color-functional-success: #009E73;
+  --color-functional-warning: #E69F00;
+  --color-functional-error: #ef5350;
   --color-functional-info: #3498DB;
   --transition-quick: 0.15s ease;
   --transition-standard: 0.25s ease-in-out;
@@ -169,14 +181,14 @@ $web-font-path: false !default;
   --color-surface-elevated: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-figure-plate: #f7f7f6;
   --color-surface-figure-plate: color(display-p3 0.9686 0.9686 0.9651);
-  --color-surface-sunken: #faf2e3;
-  --color-surface-sunken: color(display-p3 0.9749 0.9501 0.8963);
+  --color-surface-sunken: #f7f7f6;
+  --color-surface-sunken: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-navbar: #ededeb;
   --color-surface-navbar: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-navbar-scrolled: #ededeb;
   --color-surface-navbar-scrolled: color(display-p3 0.9294 0.9294 0.9223);
-  --color-surface-code: #faf2e3;
-  --color-surface-code: color(display-p3 0.9749 0.9501 0.8963);
+  --color-surface-code: #f7f7f6;
+  --color-surface-code: color(display-p3 0.9686 0.9686 0.9651);
   --color-border-subtle: rgba(12, 10, 9, 0.45);
   --color-border-subtle: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-border-moderate: rgba(12, 10, 9, 0.60);
@@ -205,6 +217,14 @@ $web-font-path: false !default;
   --color-interactive-accent: color(display-p3 0.198 0.375 0.5385);
   --color-interactive-focus: #434739;
   --color-interactive-focus: color(display-p3 0.2656 0.2779 0.2287);
+  --color-state-success: #007a58;
+  --color-state-success: color(display-p3 0.2046 0.471 0.3541);
+  --color-state-warning: #906306;
+  --color-state-warning: color(display-p3 0.5386 0.3957 0.1307);
+  --color-state-error: #a4262c;
+  --color-state-error: color(display-p3 0.5915 0.1933 0.192);
+  --color-state-info: #1f618d;
+  --color-state-info: color(display-p3 0.198 0.375 0.5385);
   --color-presentation-accent: #3498db;
   --color-presentation-accent: color(display-p3 0.3208 0.588 0.8369);
   --color-presentation-accent-hover: #2980b9;
@@ -281,6 +301,13 @@ main.content :is(p, li, dd, td, blockquote, figcaption, .callout-body) a:hover {
 pre, div.sourceCode {
   background-color: var(--color-surface-code);
   border: 1px solid var(--color-border-code);
+}
+
+// Unhighlighted blocks (fenced text, chunk output) take Bootstrap's pre colour, which Quarto compiles to #000:
+// invisible on the dark card. A bare element selector, so the syntax-highlighting sheet still colours
+// highlighted blocks (2026-11-03).
+pre {
+  color: var(--color-content-primary);
 }
 
 // Quarto themes its popups as [data-theme~="quarto"] at compile time ($body-bg);
