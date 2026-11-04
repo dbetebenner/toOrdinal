@@ -1,4 +1,4 @@
-<!-- @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/hero-fallback.svg · sha256:60a284fe66f799d46a383ddaba18712ac896aa05cece9b77d28f56e0767309f3 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync -->
+<!-- @dataimago/css@0.1.0-alpha.32 dist/quarto/_extensions/dataimago/pkgsite/hero-fallback.svg · sha256:60a284fe66f799d46a383ddaba18712ac896aa05cece9b77d28f56e0767309f3 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.32 dataimago-sync -->
 <svg class="di-hero-fallback" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" focusable="false">
 <style>
 .di-hero-fallback { display: block; width: 100%; height: 100%; }
