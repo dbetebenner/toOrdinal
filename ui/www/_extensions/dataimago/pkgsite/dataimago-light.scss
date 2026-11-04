@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:b381b085e31ef00f14726e4482625e89d10847f7aebcdcc91f030b556c11b64c · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync
+// @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:b479a44eea7f24b6b03f36c4c94bb7749e39a2bac72b28fc350bb9062e63f702 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
 // dataimago light theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -98,6 +98,16 @@ $web-font-path: false !default;
   --transition-standard: 0.25s ease-in-out;
   --transition-smooth: 0.35s ease;
   --transition-logo: 0.3s;
+  --gradient-video-poster: linear-gradient(135deg, #2b3a4a, #1f2a1f 60%, #3b2f1c);
+  --motion-enter: 200ms;
+  --motion-exit: 120ms;
+  --motion-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --motion-ease-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --motion-duration-120: 120ms;
+  --motion-duration-160: 160ms;
+  --motion-duration-200: 200ms;
+  --motion-duration-250: 250ms;
+  --motion-duration-300: 300ms;
   --font-family-sans: Noto Sans, Noto Sans Math, system-ui, sans-serif;
   --font-family-mono: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace;
   --font-family-display: var(--font-family-display-editorial);
@@ -189,6 +199,16 @@ $web-font-path: false !default;
   --color-surface-navbar-scrolled: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-code: #f7f7f6;
   --color-surface-code: color(display-p3 0.9686 0.9686 0.9651);
+  --color-surface-scrim: rgba(20, 20, 16, 0.85);
+  --color-surface-scrim: color(display-p3 0.0784 0.0784 0.0643 / 0.85);
+  --color-surface-scrim-solid: rgba(20, 20, 16, 0.92);
+  --color-surface-scrim-solid: color(display-p3 0.0784 0.0784 0.0643 / 0.92);
+  --color-surface-print: #f7f7f6;
+  --color-surface-print: color(display-p3 0.9686 0.9686 0.9651);
+  --color-surface-play-disc: rgba(247, 247, 246, 0.92);
+  --color-surface-play-disc: color(display-p3 0.9686 0.9686 0.9651 / 0.92);
+  --color-surface-media: #000000;
+  --color-surface-media: color(display-p3 0 0 0);
   --color-border-subtle: rgba(12, 10, 9, 0.45);
   --color-border-subtle: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-border-moderate: rgba(12, 10, 9, 0.60);
@@ -201,6 +221,10 @@ $web-font-path: false !default;
   --color-border-figure-frame: color(display-p3 0.4157 0.4157 0.4157);
   --color-border-code: #d6d3d1;
   --color-border-code: color(display-p3 0.8371 0.8278 0.8205);
+  --color-border-on-scrim-focus: #3498db;
+  --color-border-on-scrim-focus: color(display-p3 0.3208 0.588 0.8369);
+  --color-border-print: rgba(12, 10, 9, 0.45);
+  --color-border-print: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-content-primary: #14140f;
   --color-content-primary: color(display-p3 0.0784 0.0784 0.0608);
   --color-content-secondary: #6a6a6a;
@@ -209,6 +233,10 @@ $web-font-path: false !default;
   --color-content-muted: color(display-p3 0.4345 0.4127 0.3945);
   --color-content-inverse: #fdf9f2;
   --color-content-inverse: color(display-p3 0.9894 0.977 0.9518);
+  --color-content-on-scrim: #f7f7f6;
+  --color-content-on-scrim: color(display-p3 0.9686 0.9686 0.9651);
+  --color-content-on-print: #14140f;
+  --color-content-on-print: color(display-p3 0.0784 0.0784 0.0608);
   --color-interactive-primary: #434739;
   --color-interactive-primary: color(display-p3 0.2656 0.2779 0.2287);
   --color-interactive-hover: #363a2e;
@@ -244,6 +272,12 @@ $web-font-path: false !default;
   --shadow-subtle: 0 1px 2px 0 rgb(20 20 16 / 0.05);
   --shadow-moderate: 0 4px 6px -1px rgb(20 20 16 / 0.1);
   --shadow-prominent: 0 10px 15px -3px rgb(20 20 16 / 0.1);
+  --shadow-figure-plate-hover: 0 10px 15px -3px rgb(20 20 16 / 0.1);
+  --shadow-figure-plate-active: 0 4px 6px -1px rgb(20 20 16 / 0.1);
+  --shadow-lift: 0 -8px 24px rgb(20 20 16 / 0.07);
+  --shadow-sheet: 0 -8px 24px rgb(0 0 0 / 0.18);
+  --shadow-float: 0 1px 2px rgb(20 20 16 / 0.06), 0 4px 14px rgb(20 20 16 / 0.08);
+  --shadow-print: 0 1px 3px rgb(0 0 0 / 0.25);
   --border-subtle: rgba(20, 20, 16, 0.47);
   --border-moderate: rgba(20, 20, 16, 0.63);
   --border-focus: #3498DB;
@@ -254,6 +288,7 @@ $web-font-path: false !default;
   --color-dataviz-uncertainty-outer: #D6D6D6;
   --color-dataviz-uncertainty-union: #9E9E9E;
   --color-dataviz-uncertainty-inner: #333333;
+  --color-dataviz-map-ocean: #808fa7;
 }
 
 // ── Quarto chrome → tokens ──────────────────────────────────────────────
@@ -308,6 +343,22 @@ pre, div.sourceCode {
 // highlighted blocks (2026-11-03).
 pre {
   color: var(--color-content-primary);
+}
+
+// References run together when the CSL style asks for entry-spacing 0 (APA does): Pandoc writes the entries as
+// bare divs and gives them an inline margin of entry-spacing em, which is 0 there. Half a line between them
+// (line-height 1.5), as the PDF format does (LIwLD author review, 2026-11-03). Only for entry-spacing 0, on
+// the bibliography's own entries: a style that asks for spacing keeps it, and Quarto's citation hover popups
+// (also .csl-entry) are untouched.
+div.csl-bib-body[data-entry-spacing="0"] > div.csl-entry {
+  margin-bottom: 0.75em;
+}
+
+// A long unbroken URL in a reference pushed the LIwLD page 180px wider than a 1512px window (2026-11-03).
+// anywhere breaks only a run that cannot fit on its line, so ordinary words wrap as before; it also shrinks
+// the entry's min-content width, which break-word would not. The hover popups (also .csl-entry) get it too.
+div.csl-entry {
+  overflow-wrap: anywhere;
 }
 
 // Quarto themes its popups as [data-theme~="quarto"] at compile time ($body-bg);

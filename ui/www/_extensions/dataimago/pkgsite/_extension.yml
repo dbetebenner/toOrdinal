@@ -1,4 +1,4 @@
-# @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/_extension.yml · sha256:26bd83df8c5593513fbd2555b82c01302da1329644dc7ba32be514b138d9d1df · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync
+# @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/_extension.yml · sha256:3b0f7f2ef27d1032d9c793c4d527b480d1a82ba6cb014fb39695595ed58b37c0 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
 title: dataimago package site
 author: dataimago
 version: 0.1.0
@@ -23,6 +23,7 @@ contributes:
       filters:
         - filters/landing.lua
         - filters/provenance.lua
+        - filters/figure-viewer.lua
       format-resources:
         - hero-fallback.svg
         - pkgsite-hero.js

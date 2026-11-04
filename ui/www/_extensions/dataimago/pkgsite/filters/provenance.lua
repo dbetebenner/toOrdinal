@@ -1,4 +1,4 @@
--- @dataimago/css@0.1.0-alpha.30 dist/quarto/_extensions/dataimago/pkgsite/filters/provenance.lua · sha256:68e33df59cd4c88e1d4bd51bdd3ec45bfa62f64a1b27c8ed305cb59d4e49853b · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.30 dataimago-sync
+-- @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/filters/provenance.lua · sha256:68e33df59cd4c88e1d4bd51bdd3ec45bfa62f64a1b27c8ed305cb59d4e49853b · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
 -- provenance.lua: the AI-composed label. Pandoc 3 Lua filter for Quarto >= 1.8.
 --
 -- A page whose front matter carries `knowledge:` gets a div.di-provenance before its first block; a page
