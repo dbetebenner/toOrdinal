@@ -1,6 +1,6 @@
 {
   "package": "@dataimago/css",
-  "version": "0.1.0-alpha.32",
+  "version": "0.1.0-alpha.33",
   "outputs": {
     "quarto/_extensions/dataimago/pkgsite/": "_extensions/dataimago/pkgsite/",
     "fonts/latin/": "assets/fonts/latin/",

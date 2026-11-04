@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.32 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:48bdcc63f9009fcd915c27027b7a867ce760af11af3b417d46ff269cf34265ce · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.32 dataimago-sync
+// @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:b479a44eea7f24b6b03f36c4c94bb7749e39a2bac72b28fc350bb9062e63f702 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
 // dataimago light theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -207,6 +207,8 @@ $web-font-path: false !default;
   --color-surface-print: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-play-disc: rgba(247, 247, 246, 0.92);
   --color-surface-play-disc: color(display-p3 0.9686 0.9686 0.9651 / 0.92);
+  --color-surface-media: #000000;
+  --color-surface-media: color(display-p3 0 0 0);
   --color-border-subtle: rgba(12, 10, 9, 0.45);
   --color-border-subtle: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-border-moderate: rgba(12, 10, 9, 0.60);
@@ -221,6 +223,8 @@ $web-font-path: false !default;
   --color-border-code: color(display-p3 0.8371 0.8278 0.8205);
   --color-border-on-scrim-focus: #3498db;
   --color-border-on-scrim-focus: color(display-p3 0.3208 0.588 0.8369);
+  --color-border-print: rgba(12, 10, 9, 0.45);
+  --color-border-print: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-content-primary: #14140f;
   --color-content-primary: color(display-p3 0.0784 0.0784 0.0608);
   --color-content-secondary: #6a6a6a;
@@ -348,6 +352,13 @@ pre {
 // (also .csl-entry) are untouched.
 div.csl-bib-body[data-entry-spacing="0"] > div.csl-entry {
   margin-bottom: 0.75em;
+}
+
+// A long unbroken URL in a reference pushed the LIwLD page 180px wider than a 1512px window (2026-11-03).
+// anywhere breaks only a run that cannot fit on its line, so ordinary words wrap as before; it also shrinks
+// the entry's min-content width, which break-word would not. The hover popups (also .csl-entry) get it too.
+div.csl-entry {
+  overflow-wrap: anywhere;
 }
 
 // Quarto themes its popups as [data-theme~="quarto"] at compile time ($body-bg);
