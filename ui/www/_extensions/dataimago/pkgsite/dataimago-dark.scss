@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:a689f039ca58e65cdf96623f9067cf0cffb11c6842c1893eeb51064b3b99f809 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
+// @dataimago/css@0.1.0-alpha.38 dist/quarto/_extensions/dataimago/pkgsite/dataimago-dark.scss · sha256:8871f45da543382370ef5c83daf0725d2a40d2229e4a5c0cc29bee3d048fd568 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.38 dataimago-sync
 // dataimago dark theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -390,6 +390,9 @@ div.csl-entry {
   border-radius: var(--radius-md);
   padding: var(--spacing-md);
 }
+
+// Maths in a Josefin heading or title: 0.83em (1.18 / 1.418), house identity only (tools/formats/quarto.mjs).
+:is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):not(:is(:lang(el), :lang(ru), :lang(uk), :lang(bg), :lang(sr), :lang(mk), :lang(be), :lang(kk), :lang(ar), :lang(fa), :lang(ur), :lang(he), :lang(hi), :lang(mr), :lang(ne), :lang(bn), :lang(ta), :lang(th), :lang(hy), :lang(ka), :lang(am), :lang(ja), :lang(ko), :lang(zh), :lang(zh-Hans), :lang(zh-CN), :lang(zh-SG), :lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO))) math { font-size: 0.83em; }
 
 body.quarto-dark figure img.box,
 body.quarto-dark p img.box {

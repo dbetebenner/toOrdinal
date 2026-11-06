@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.33 dist/quarto/_extensions/dataimago/pkgsite/pkgsite-hero.js · sha256:372b3ff2e24a7f3ce0973f50abc31b491465ba0e973b6cf6f917ea41dd21ea5c · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.33 dataimago-sync
+// @dataimago/css@0.1.0-alpha.38 dist/quarto/_extensions/dataimago/pkgsite/pkgsite-hero.js · sha256:372b3ff2e24a7f3ce0973f50abc31b491465ba0e973b6cf6f917ea41dd21ea5c · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.38 dataimago-sync
 /**
  * pkgsite hero loader (spec "Hero inputs"). Loaded only for `hero.kind: js`.
  *
