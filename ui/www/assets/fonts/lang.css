@@ -1,4 +1,4 @@
-/* @dataimago/css@0.1.0-alpha.38 dist/fonts/lang.css · sha256:f6c5232530e667d9e66b6cd7e7dbd4f6132ed96fc4439fdeff814c69727a9281 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.38 dataimago-sync */
+/* @dataimago/css@0.1.0-alpha.45 dist/fonts/lang.css · sha256:f6c5232530e667d9e66b6cd7e7dbd4f6132ed96fc4439fdeff814c69727a9281 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.45 dataimago-sync */
 /* House layer: rebind the display variables on the named elements only. */
 :is(h1, h2, h3, h4, h5, h6, .title, .subtitle, .navbar-nav .nav-link, .navbar-nav .dropdown-item, .di-callout-title, .theorem-title, .proof-title, .definition-title, .proposition-title):is(:lang(el), :lang(ru), :lang(uk), :lang(bg), :lang(sr), :lang(mk), :lang(be), :lang(kk)) {
   --font-family-display: "Noto Sans", system-ui, sans-serif;
