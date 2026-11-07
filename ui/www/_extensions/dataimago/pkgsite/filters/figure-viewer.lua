@@ -1,4 +1,4 @@
--- @dataimago/css@0.1.0-alpha.38 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.lua · sha256:24da72d6d895ce18aa41de7107fdecf46cbcdd84481011a51ec63362e4398d7f · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.38 dataimago-sync
+-- @dataimago/css@0.1.0-alpha.45 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.lua · sha256:ea35293c363ad0057e69f0df0bdbfac82675faddac6135b9b1e61350919f234d · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.45 dataimago-sync
 -- figure-viewer.lua: the dataimago figure viewer for Quarto. Pandoc 3 Lua filter for Quarto >= 1.11.
 --
 -- Marks the images inside a figure with `di-figure-box` (the trigger the house module binds by event
@@ -7,7 +7,8 @@
 --   * an image inside a link (the link keeps its own meaning);
 --   * a code cell (`.cell`) with the class `no-zoom` (`#| classes: no-zoom` lands there);
 --   * revealjs: slides are not a Bootstrap page, so the viewer would open unstyled over the deck. The filter
---     does nothing there. Other Bootstrap HTML formats (html, dashboard) are served.
+--     does nothing there, except in the house slides format (`dataimago-slides: true` in its metadata), whose
+--     stylesheet and plugin serve the viewer. Other Bootstrap HTML formats (html, dashboard) are served.
 -- Marked: the images in a captioned figure, and the uncaptioned image a code cell leaves in
 -- `.cell-output-display` (a knitr plot), so a vignette's plots open too.
 -- Quarto's own lightbox would open a second viewer, so the filter sets `lightbox: false` in HTML output,
@@ -59,8 +60,11 @@ local function mark_in(blocks)
   })
 end
 
+-- Set by the Meta handler, which runs before any other handler.
+local slides = false
+
 local function is_html()
-  return quarto.doc.is_format('html') and not quarto.doc.is_format('revealjs')
+  return quarto.doc.is_format('html') and (slides or not quarto.doc.is_format('revealjs'))
 end
 
 local added = false
@@ -125,6 +129,7 @@ local function Div(div)
 end
 
 local function Meta(meta)
+  slides = meta['dataimago-slides'] == true
   if is_html() then
     meta.lightbox = false
     return meta
