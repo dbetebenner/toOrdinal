@@ -1,4 +1,4 @@
--- @dataimago/css@0.1.0-alpha.45 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.lua · sha256:ea35293c363ad0057e69f0df0bdbfac82675faddac6135b9b1e61350919f234d · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.45 dataimago-sync
+-- @dataimago/css@0.1.0-alpha.50 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.lua · sha256:ea35293c363ad0057e69f0df0bdbfac82675faddac6135b9b1e61350919f234d · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.50 dataimago-sync
 -- figure-viewer.lua: the dataimago figure viewer for Quarto. Pandoc 3 Lua filter for Quarto >= 1.11.
 --
 -- Marks the images inside a figure with `di-figure-box` (the trigger the house module binds by event
