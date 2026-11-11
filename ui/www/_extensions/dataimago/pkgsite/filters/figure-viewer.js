@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.45 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.js · sha256:650db5390b3cbe889213e02efad264ed6b33042d6f9da1b476ec19f7d5b8e7e4 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.45 dataimago-sync
+// @dataimago/css@0.1.0-alpha.50 dist/quarto/_extensions/dataimago/pkgsite/filters/figure-viewer.js · sha256:650db5390b3cbe889213e02efad264ed6b33042d6f9da1b476ec19f7d5b8e7e4 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.50 dataimago-sync
 /**
  * dataimago figure viewer: click (or Enter/Space) an image marked `.di-figure-box` to see it enlarged
  * in a dialog, with its figcaption (math, emphasis and links intact).

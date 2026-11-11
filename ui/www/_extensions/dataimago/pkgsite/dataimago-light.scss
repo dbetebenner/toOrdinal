@@ -1,4 +1,4 @@
-// @dataimago/css@0.1.0-alpha.45 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:d868df68c00dd03f65e8ac565d395c2188287674643d6d54a59ff10feb70f7b6 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.45 dataimago-sync
+// @dataimago/css@0.1.0-alpha.50 dist/quarto/_extensions/dataimago/pkgsite/dataimago-light.scss · sha256:8d2e9a9366396cd9d13368a85609526d55b2cc79a2a9bc9049d3e903e2875692 · generated from tokens; do not edit · restore: npx -p @dataimago/css@0.1.0-alpha.50 dataimago-sync
 // dataimago light theme for Quarto 1.11 — generated from the design tokens (tools/formats/quarto.mjs).
 // Bootstrap Sass variables are compile-time sRGB; runtime colours come from the custom properties below.
 
@@ -24,9 +24,9 @@ $callout-color-tip: #007a58 !default;
 $callout-color-important: #a4262c !default;
 $callout-color-caution: #906306 !default;
 $callout-color-warning: #906306 !default;
-$font-family-sans-serif: Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
-$font-family-monospace: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace !default;
-$headings-font-family: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif !default;
+$font-family-sans-serif: Noto Sans, Noto Sans Fallback, Noto Sans Fallback Android, Noto Sans Math, system-ui, sans-serif !default;
+$font-family-monospace: Noto Sans Mono, Noto Sans Mono Fallback, SF Mono, Monaco, Inconsolata, monospace !default;
+$headings-font-family: Josefin Sans, Josefin Sans Fallback Futura, Josefin Sans Fallback, Josefin Sans Fallback Android, Noto Sans, Noto Sans Fallback, Noto Sans Fallback Android, Noto Sans Math, system-ui, sans-serif !default;
 $headings-font-weight: 500 !default;
 $h2-font-size: 1.875rem !default;
 $web-font-path: false !default;
@@ -108,11 +108,11 @@ $web-font-path: false !default;
   --motion-duration-200: 200ms;
   --motion-duration-250: 250ms;
   --motion-duration-300: 300ms;
-  --font-family-sans: Noto Sans, Noto Sans Math, system-ui, sans-serif;
-  --font-family-mono: Noto Sans Mono, SF Mono, Monaco, Inconsolata, monospace;
+  --font-family-sans: Noto Sans, Noto Sans Fallback, Noto Sans Fallback Android, Noto Sans Math, system-ui, sans-serif;
+  --font-family-mono: Noto Sans Mono, Noto Sans Mono Fallback, SF Mono, Monaco, Inconsolata, monospace;
   --font-family-display: var(--font-family-display-editorial);
-  --font-family-display-editorial: Josefin Sans, Noto Sans, Noto Sans Math, system-ui, sans-serif;
-  --font-family-display-documentation: Noto Sans, Noto Sans Math, system-ui, sans-serif;
+  --font-family-display-editorial: Josefin Sans, Josefin Sans Fallback Futura, Josefin Sans Fallback, Josefin Sans Fallback Android, Noto Sans, Noto Sans Fallback, Noto Sans Fallback Android, Noto Sans Math, system-ui, sans-serif;
+  --font-family-display-documentation: Noto Sans, Noto Sans Fallback, Noto Sans Fallback Android, Noto Sans Math, system-ui, sans-serif;
   --font-family-brand: Futura, system-ui, sans-serif;
   --font-family-math: Noto Sans Math, math;
   --font-size-micro: 0.75rem;
@@ -180,91 +180,78 @@ $web-font-path: false !default;
   --color-dataviz-sgpc-bucket-typical: #56B4E9;
   --color-dataviz-sgpc-bucket-high: #009E73;
   --color-dataviz-sgpc-bucket-very-high: #0072B2;
+  --color-dataviz-sgpc-role-marginal: #0072B2;
+  --color-dataviz-sgpc-role-linkage: #D55E00;
+  --color-dataviz-sgpc-role-kernel: #CC79A7;
+  --color-dataviz-figure-army-green: #58A145;
 }
 
 :root, [data-bs-theme="light"] {
   --color-surface-page: #ededeb;
-  --color-surface-page: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-page-scrolled: #ededeb;
-  --color-surface-page-scrolled: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-elevated: #f7f7f6;
-  --color-surface-elevated: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-figure-plate: #f7f7f6;
-  --color-surface-figure-plate: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-sunken: #f7f7f6;
-  --color-surface-sunken: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-navbar: #ededeb;
-  --color-surface-navbar: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-navbar-scrolled: #ededeb;
-  --color-surface-navbar-scrolled: color(display-p3 0.9294 0.9294 0.9223);
   --color-surface-code: #f7f7f6;
-  --color-surface-code: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-scrim: rgba(20, 20, 16, 0.85);
-  --color-surface-scrim: color(display-p3 0.0784 0.0784 0.0643 / 0.85);
   --color-surface-scrim-solid: rgba(20, 20, 16, 0.92);
-  --color-surface-scrim-solid: color(display-p3 0.0784 0.0784 0.0643 / 0.92);
   --color-surface-print: #f7f7f6;
-  --color-surface-print: color(display-p3 0.9686 0.9686 0.9651);
   --color-surface-play-disc: rgba(247, 247, 246, 0.92);
-  --color-surface-play-disc: color(display-p3 0.9686 0.9686 0.9651 / 0.92);
   --color-surface-media: #000000;
-  --color-surface-media: color(display-p3 0 0 0);
+  --color-surface-state-strong-success: #006146;
+  --color-surface-state-strong-warning: #e69f00;
+  --color-surface-state-strong-error: #ae001a;
+  --color-surface-state-strong-info: #00598b;
+  --color-surface-state-strong-hover-success: #00513a;
+  --color-surface-state-strong-hover-warning: #f7af2a;
+  --color-surface-state-strong-hover-error: #950015;
+  --color-surface-state-strong-hover-info: #004b76;
+  --color-surface-state-strong-pressed-success: #00422f;
+  --color-surface-state-strong-pressed-warning: #ffc364;
+  --color-surface-state-strong-pressed-error: #7e0010;
+  --color-surface-state-strong-pressed-info: #003d61;
+  --color-surface-state-pale-success: #d8f5e7;
+  --color-surface-state-pale-warning: #fbead3;
+  --color-surface-state-pale-error: #ffe6e4;
+  --color-surface-state-pale-info: #ddf0ff;
   --color-border-subtle: rgba(12, 10, 9, 0.45);
-  --color-border-subtle: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
   --color-border-moderate: rgba(12, 10, 9, 0.60);
-  --color-border-moderate: color(display-p3 0.0457 0.0395 0.0358 / 0.60);
   --color-border-strong: rgba(12, 10, 9, 0.75);
-  --color-border-strong: color(display-p3 0.0457 0.0395 0.0358 / 0.75);
   --color-border-card: rgba(12, 10, 9, 0.60);
-  --color-border-card: color(display-p3 0.0457 0.0395 0.0358 / 0.60);
   --color-border-figure-frame: #6a6a6a;
-  --color-border-figure-frame: color(display-p3 0.4157 0.4157 0.4157);
   --color-border-code: #d6d3d1;
-  --color-border-code: color(display-p3 0.8371 0.8278 0.8205);
   --color-border-on-scrim-focus: #3498db;
-  --color-border-on-scrim-focus: color(display-p3 0.3208 0.588 0.8369);
   --color-border-print: rgba(12, 10, 9, 0.45);
-  --color-border-print: color(display-p3 0.0457 0.0395 0.0358 / 0.45);
+  --color-border-state-strong-success: #006146;
+  --color-border-state-strong-warning: #906306;
+  --color-border-state-strong-error: #ae001a;
+  --color-border-state-strong-info: #00598b;
   --color-content-primary: #14140f;
-  --color-content-primary: color(display-p3 0.0784 0.0784 0.0608);
   --color-content-secondary: #6a6a6a;
-  --color-content-secondary: color(display-p3 0.4157 0.4157 0.4157);
   --color-content-muted: #706964;
-  --color-content-muted: color(display-p3 0.4345 0.4127 0.3945);
   --color-content-inverse: #fdf9f2;
-  --color-content-inverse: color(display-p3 0.9894 0.977 0.9518);
   --color-content-on-scrim: #f7f7f6;
-  --color-content-on-scrim: color(display-p3 0.9686 0.9686 0.9651);
   --color-content-on-print: #14140f;
-  --color-content-on-print: color(display-p3 0.0784 0.0784 0.0608);
+  --color-content-on-state-strong-success: #fdf9f2;
+  --color-content-on-state-strong-warning: #14140f;
+  --color-content-on-state-strong-error: #fdf9f2;
+  --color-content-on-state-strong-info: #fdf9f2;
   --color-interactive-primary: #434739;
-  --color-interactive-primary: color(display-p3 0.2656 0.2779 0.2287);
   --color-interactive-hover: #363a2e;
-  --color-interactive-hover: color(display-p3 0.2146 0.2269 0.1848);
   --color-interactive-accent: #1f618d;
-  --color-interactive-accent: color(display-p3 0.198 0.375 0.5385);
   --color-interactive-focus: #434739;
-  --color-interactive-focus: color(display-p3 0.2656 0.2779 0.2287);
   --color-state-success: #007a58;
-  --color-state-success: color(display-p3 0.2046 0.471 0.3541);
   --color-state-warning: #906306;
-  --color-state-warning: color(display-p3 0.5386 0.3957 0.1307);
   --color-state-error: #a4262c;
-  --color-state-error: color(display-p3 0.5915 0.1933 0.192);
   --color-state-info: #1f618d;
-  --color-state-info: color(display-p3 0.198 0.375 0.5385);
   --color-presentation-accent: #3498db;
-  --color-presentation-accent: color(display-p3 0.3208 0.588 0.8369);
   --color-presentation-accent-hover: #2980b9;
-  --color-presentation-accent-hover: color(display-p3 0.2638 0.495 0.7068);
   --color-vertical-accent-dissertation: #b87333;
-  --color-vertical-accent-dissertation: color(display-p3 0.7242 0.4389 0.1259);
   --color-vertical-accent-rpkg: #3b82f6;
-  --color-vertical-accent-rpkg: color(display-p3 0.3047 0.5035 0.9338);
   --color-vertical-accent-SGPc: #5a6310;
-  --color-vertical-accent-SGPc: color(display-p3 0.3595 0.3871 0.1309);
   --color-brand-mark-red: #cc0000;
-  --color-brand-mark-red: color(display-p3 0.7331 0.1519 0.1019);
   --contrast-high: rgb(20, 20, 16);
   --contrast-readable: rgb(20, 20, 16);
   --contrast-medium: #7c7c7c;
@@ -289,6 +276,12 @@ $web-font-path: false !default;
   --color-dataviz-uncertainty-union: #9E9E9E;
   --color-dataviz-uncertainty-inner: #333333;
   --color-dataviz-map-ocean: #808fa7;
+}
+@supports (color: color(display-p3 1 0 0)) {
+  :root, [data-bs-theme="light"] {
+    --color-vertical-accent-dissertation: color(display-p3 0.7242 0.4389 0.1259);
+    --color-brand-mark-red: #cc0000;
+  }
 }
 
 // ── Quarto chrome → tokens ──────────────────────────────────────────────
