@@ -1,0 +1,118 @@
+# toOrdinal Overview outline: a PROPOSAL, awaiting the maintainer.
+#
+# The maintainer approves or trims this outline, then writes one letter per heading
+# (the founder's answer of 2026-11-17, "outline-first"). Nothing here is Overview text.
+# Each page that stays is composed later from its letters and knowledge/code-map.yml,
+# and is approved page by page (package-site-factory decision 8). No page carries a
+# knowledge: block yet.
+#
+# decision: apply | skip | merge-with:<page>
+# evidence: keys in knowledge/code-map.yml, at its source_sha
+# headings: one letter each; "asks" is the question the letter answers. Facts the code
+#           map already holds (rule tables, versions, permalinks) need no letter.
+
+status: proposed
+package: toOrdinal
+code_map: knowledge/code-map.yml
+source_sha: 70fbc7c68121e072890bc05e5a5659e729be6ded
+proposed_on: 2026-11-26
+proposed_by: "Claude Code session (claude-opus-5-5)"
+
+pages:
+  - page: Purpose
+    decision: apply
+    file: overview/purpose.qmd
+    evidence:
+      - "description.title and description.description say what it does, in one line"
+      - "history.reverse_dependencies_on_cran: five CRAN packages import or suggest it (SGP, randomNames, Clustering, impactr, smoothic)"
+    headings:
+      - heading: "Why toOrdinal exists"
+        asks: "What made a package for ordinal indicators worth writing in 2015?"
+      - heading: "Who relies on it"
+        asks: "What do SGP and randomNames need it for, and who else do you know uses it?"
+      - heading: "What it leaves out"
+        asks: "Is it meant to stay a small indicator function, or to grow into number words and dates in every language?"
+
+  - page: Concepts
+    decision: merge-with:How it works
+    evidence:
+      - "the package has four ideas (cardinal number, ordinal number, ordinal indicator, ordinal word); exports has two functions"
+      - "a page of four definitions would come before a page that cannot be read without them"
+
+  - page: How it works
+    decision: apply
+    file: overview/how-it-works.qmd
+    evidence:
+      - "exports and internals: two vectorised wrappers over toOrdinal_INTERNAL, which validates, then switches on language and convert_to (R/toOrdinal_Utility_Functions.R:22-90)"
+      - "languages: eight rules, most decided by the last one or two digits; Turkish builds words by recursion and vowel harmony; toOrdinalDate reuses toOrdinal, English only"
+    composed_from_code_map:
+      - "the call path, with permalinks"
+      - "the rule table: one row per language, with its tests"
+    headings:
+      - heading: "The terms"
+        asks: "Which words should a reader keep straight (cardinal, ordinal, indicator, word), and is there a term you use that the code does not?"
+        note: "absorbs Concepts and Glossary"
+      - heading: "One rule per language"
+        asks: "Why are the rules written as tests on the last digits, rather than as lookup tables, and how should a new language be added?"
+      - heading: "Turkish words"
+        asks: "Why is Turkish the only language with ordinal words, and where did its rules come from?"
+      - heading: "Dates"
+        asks: "Why does toOrdinalDate exist, and is it meant to follow toOrdinal into other languages?"
+
+  - page: Workflows
+    decision: skip
+    evidence:
+      - "exports: two functions, each used in one call; there is no sequence of steps to describe"
+      - "documentation.vignettes: 'Getting started with toOrdinal' already shows every use, and it lives under Documentation"
+
+  - page: Assumptions
+    decision: apply
+    file: overview/assumptions.qmd
+    evidence:
+      - "internals.toOrdinal_INTERNAL.validation: non-negative whole numbers only; NA and character input fail with R's own errors (observations)"
+      - "languages: one indicator per language, with no gender or case (French 're'/'e', Spanish '.er'/'..º', German 'te'/'ste' or GERMAN_ALT '.')"
+      - "stated limits: Turkish words stop at 999; dates are English only; .onAttach reaches CRAN and GitHub in interactive sessions"
+    headings:
+      - heading: "What counts as a number"
+        asks: "Should toOrdinal accept only whole numbers of zero and up, and what should happen to NA, text and very large numbers?"
+      - heading: "One form per language"
+        asks: "Which form of each language does the package choose (gender, abbreviation, the German full stop), and why that one?"
+      - heading: "What the package reaches for at startup"
+        asks: "Why does attaching the package check CRAN and GitHub, and should a reader know that it does?"
+    needs_your_call_first: >
+      The observations in the code map show behaviour that is either a bug or an assumption
+      to state: Spanish '2..º' (two dots; the README shows '5.º'), Turkish words that keep a
+      doubled vowel ('ikiinci'), Turkish words that recurse without end for 11-19, 21-29 and
+      so on up to 999, toOrdinalDate() returning list() instead of today's date, and an
+      unknown convert_to returning NULL. The Assumptions page should not present a bug as an
+      assumption, so it waits on which of these you will fix.
+
+  - page: History
+    decision: apply
+    file: overview/history.qmd
+    evidence:
+      - "history.versions_in_git: 14 versions from 2015-03-05 to 2024-12-03; history.cran_releases: 7 CRAN releases from 2015-03-12 to 2026-02-06"
+      - "languages arrived over time: Spanish 0.0-2, Swedish 0.0-3 (Jeff Erickson), GERMAN_ALT 0.0-7, Dutch 1.2-0.0 (huisman), Turkish in the supported list from 1.3-9.0"
+      - "gaps: NEWS.md stops at 1.3-0.0, and CRAN's 1.4-0.0 has no commit in git"
+    composed_from_code_map:
+      - "the timeline of versions, CRAN releases and languages"
+    headings:
+      - heading: "How it began"
+        asks: "What were you working on in March 2015 that needed it?"
+      - heading: "How the languages arrived"
+        asks: "How did the Swedish, Dutch and Turkish contributions come about?"
+      - heading: "From 1.3 to 1.4"
+        asks: "What changed between 2022 and 2026 that NEWS.md does not record?"
+    note: "What's new already renders NEWS.md, so History is the story, not a second changelog. If that is too much for a package this size, merge History into Purpose."
+
+  - page: Glossary
+    decision: merge-with:How it works
+    evidence:
+      - "the same four terms as Concepts; a separate page would repeat 'The terms' heading"
+
+summary:
+  pages_that_apply: [Purpose, How it works, Assumptions, History]
+  skipped: [Workflows]
+  merged: { Concepts: How it works, Glossary: How it works }
+  letters: 13
+  smallest_trim: "Purpose and How it works alone (7 letters), with Assumptions and History merged into them"

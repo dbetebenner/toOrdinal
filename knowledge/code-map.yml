@@ -1,0 +1,262 @@
+# toOrdinal code map: an inventory derived from the code, not prose.
+#
+# Every `at:` is path:line at source_sha. Its permalink is
+#   <source_url with /tree/ replaced by /blob/>/<path>#L<line>
+# The Overview outline (knowledge/outline.yml) cites this file by key.
+# Nothing here is approved Overview text; it is the evidence the pages would be composed from.
+#
+# Built by hand in a Claude Code session (claude-opus-5-5) on 2026-11-26. Phase D's pipeline
+# does not exist yet (wi-20261101-package-site-knowledge-pipeline). Its first job can be to
+# regenerate this file and diff it against this one.
+#
+# Scope: the package (R/, man/, tests/, vignettes/, DESCRIPTION, NAMESPACE, NEWS.md, inst/).
+# Out of scope: ui/ (the generated site), .github/ (CI), LICENSE.md.
+
+schema: codemap-proposal-0   # no schema is specified yet; this shape is a proposal
+package: toOrdinal
+source_repo: https://github.com/DBetebenner/toOrdinal
+source_sha: 70fbc7c68121e072890bc05e5a5659e729be6ded
+source_url: https://github.com/DBetebenner/toOrdinal/tree/70fbc7c68121e072890bc05e5a5659e729be6ded
+source_branch: master
+upstream: https://github.com/CenterForAssessment/toOrdinal   # same package code at this sha; the fork adds only the site and CI
+built_on: 2026-11-26
+
+description:
+  title: { value: "Cardinal to Ordinal Number & Date Conversion", at: "DESCRIPTION:4" }
+  description: { value: "Language specific cardinal to ordinal number conversion.", at: "DESCRIPTION:5" }
+  version: { value: "1.3-9.1", at: "DESCRIPTION:2" }
+  date: { value: "2024-12-3", at: "DESCRIPTION:3", note: "not zero-padded ISO" }
+  authors:
+    - { name: "Damian W. Betebenner", roles: [aut, cre], at: "DESCRIPTION:6" }
+    - { name: "Andrew Martin", roles: [ctb], at: "DESCRIPTION:7" }
+    - { name: "Jeff Erickson", roles: [ctb], at: "DESCRIPTION:8" }
+  depends: { value: "R (>= 3.3)", at: "DESCRIPTION:10" }
+  imports: { value: [crayon, pkgsearch], at: "DESCRIPTION:12" }
+  suggests: { value: [knitr, rmarkdown, testthat], at: "DESCRIPTION:11" }
+  license: { value: "GPL-3", at: "DESCRIPTION:18" }
+  urls:
+    value:
+      - https://centerforassessment.github.io/toOrdinal/
+      - https://github.com/centerforassessment/toOrdinal/
+      - https://cran.r-project.org/package=toOrdinal
+    at: "DESCRIPTION:13"
+
+namespace:
+  exports:
+    - { name: toOrdinal, at: "NAMESPACE:1" }
+    - { name: toOrdinalDate, at: "NAMESPACE:2" }
+  imports_from:
+    - { package: crayon, symbols: [bold, cyan, green, magenta, red, yellow], at: "NAMESPACE:3" }
+    - { package: utils, symbols: [packageVersion, tail], at: "NAMESPACE:4" }
+  called_with_double_colon:
+    - { call: "pkgsearch::cran_package", at: "R/zzz.R:28" }
+    - { call: "utils::packageDescription", at: "R/zzz.R:26" }
+
+exports:
+  - name: toOrdinal
+    at: "R/toOrdinal.R:1"
+    args:
+      - { name: cardinal_number, default: null, at: "R/toOrdinal.R:3" }
+      - { name: language, default: "English", at: "R/toOrdinal.R:4" }
+      - { name: convert_to, default: "ordinal_number", at: "R/toOrdinal.R:5" }
+    body: "sapply(cardinal_number, toOrdinal_INTERNAL, language, convert_to, USE.NAMES=FALSE)"
+    body_at: "R/toOrdinal.R:7"
+    vectorised_over: cardinal_number
+    docs: "man/toOrdinal.Rd"
+  - name: toOrdinalDate
+    at: "R/toOrdinalDate.R:1"
+    args:
+      - { name: date, default: NULL, at: "R/toOrdinalDate.R:3" }
+      - { name: language, default: "English", at: "R/toOrdinalDate.R:4" }
+    body: "sapply(date, toOrdinalDate_INTERNAL, language, USE.NAMES=FALSE)"
+    body_at: "R/toOrdinalDate.R:6"
+    vectorised_over: date
+    docs: "man/toOrdinalDate.Rd"
+
+internals:
+  - name: toOrdinal_INTERNAL
+    at: "R/toOrdinal_Utility_Functions.R:2"
+    role: "validates one number, then dispatches on toupper(language) and convert_to"
+    validation:
+      - { rule: "must be a non-negative whole number, else stop()", at: "R/toOrdinal_Utility_Functions.R:8" }
+      - { rule: "language must be in supported_languages, else stop()", at: "R/toOrdinal_Utility_Functions.R:13" }
+    supported_languages: { at: "R/toOrdinal_Utility_Functions.R:12" }
+    convert_to_matching: "gsub('_', ' ', toupper(convert_to)); so 'ordinal_number', 'Ordinal Number' and 'ORDINAL_NUMBER' all match"
+    convert_to_at: ["R/toOrdinal_Utility_Functions.R:19", "R/toOrdinal_Utility_Functions.R:60"]
+    ordinal_number_switch: { from: "R/toOrdinal_Utility_Functions.R:22", to: "R/toOrdinal_Utility_Functions.R:55" }
+    ordinal_word_switch: { from: "R/toOrdinal_Utility_Functions.R:63", to: "R/toOrdinal_Utility_Functions.R:90" }
+  - name: toOrdinalDate_INTERNAL
+    at: "R/toOrdinal_Utility_Functions.R:95"
+    role: "English only: '<Month> <toOrdinal(day)>, <Year>'; no branch for other languages"
+    english_branch: "R/toOrdinal_Utility_Functions.R:102"
+    calls: [toOrdinal]
+    null_date_branch: { uses: "Sys.time()", at: "R/toOrdinal_Utility_Functions.R:103" }
+  - name: strTail
+    at: "R/toOrdinal_Utility_Functions.R:112"
+    role: "last n characters of each string; used by the English, Spanish and Swedish rules"
+  - name: get_turkish_number_word
+    at: "R/toOrdinal_Utility_Functions.R:140"
+    role: "Turkish cardinal word for 1 to 999, by lookup (1-10, tens, hundreds) and recursion on the remainder"
+    lookup_table: { from: "R/toOrdinal_Utility_Functions.R:141", to: "R/toOrdinal_Utility_Functions.R:149" }
+    limit: { rule: "stop() above 999", at: "R/toOrdinal_Utility_Functions.R:162" }
+  - name: turkish_ordinal_suffix
+    at: "R/toOrdinal_Utility_Functions.R:167"
+    role: "picks -ıncı / -uncu / -inci / -üncü from the word's last vowel (vowel harmony)"
+    vowels: "R/toOrdinal_Utility_Functions.R:171"
+  - name: .onAttach
+    at: "R/zzz.R:5"
+    role: "interactive sessions only: prints installed, CRAN and GitHub versions"
+    network:
+      - { what: "CRAN version via pkgsearch::cran_package()", at: "R/zzz.R:28" }
+      - { what: "dev version from raw.githubusercontent.com/CenterForAssessment/<pkg>/refs/heads/master/DESCRIPTION", at: "R/zzz.R:9" }
+    hard_coded_date: { value: "2024-12-4", at: "R/zzz.R:35" }
+  - name: .onLoad
+    at: "R/zzz.R:1"
+    role: "empty"
+
+data_objects: []   # no data/ directory and no exported data sets
+
+languages:
+  # rule = what the code does, quoted from the switch arms; tests = which test file covers it
+  - name: DUTCH
+    ordinal_number: { rule: "n %% 100 in 11..19 -> 'de'; else last digit 1, 8 or 0 -> 'ste'; else 'de'", at: "R/toOrdinal_Utility_Functions.R:23" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:64" }
+    tests: { file: "tests/testthat/test_toOrdinal_dutch.R", covers: "0-30, negative input" }
+    added: { version: "1.2-0.0", by: "huisman", at: "NEWS.md:8" }
+  - name: ENGLISH
+    ordinal_number: { rule: "last two digits 11, 12, 13 -> 'th'; else last digit 1 'st', 2 'nd', 3 'rd', otherwise 'th'", at: "R/toOrdinal_Utility_Functions.R:32" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:67" }
+    tests: { file: "tests/testthat/test_toOrdinal_english.R", covers: "0-40, negative input" }
+    added: { version: "0.0-1", at: "NEWS.md:50" }
+  - name: FRENCH
+    ordinal_number: { rule: "1 -> 're'; else 'e'", at: "R/toOrdinal_Utility_Functions.R:39" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:70" }
+    tests: none
+    added: { version: "0.0-1", note: "present in the first package-source commit 2a2ef72" }
+  - name: GERMAN
+    ordinal_number: { rule: "n <= 19 -> 'te'; else 'ste'", at: "R/toOrdinal_Utility_Functions.R:40" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:73" }
+    tests: { file: "tests/testthat/test_toOrdinal_german.R", covers: "0-20, negative input" }
+    added: { version: "0.0-1", note: "present in the first package-source commit 2a2ef72; '0te' added in 0.0-7", at: "NEWS.md:27" }
+  - name: GERMAN_ALT
+    ordinal_number: { rule: "always '.' (the full stop)", at: "R/toOrdinal_Utility_Functions.R:41" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:76" }
+    tests: none
+    added: { version: "0.0-7", at: "NEWS.md:26" }
+  - name: SPANISH
+    ordinal_number: { rule: "last digit 1 or 3 -> '.er'; else '..º' (two dots, as written)", at: "R/toOrdinal_Utility_Functions.R:42" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:79" }
+    tests: none
+    added: { version: "0.0-2", note: "first appears in commit bae47b1 (0.0-2)" }
+  - name: SWEDISH
+    ordinal_number: { rule: "last two digits 11 or 12, or last digit 0 or 3-9 -> ':e'; else ':a'", at: "R/toOrdinal_Utility_Functions.R:46" }
+    ordinal_word: { implemented: false, at: "R/toOrdinal_Utility_Functions.R:82" }
+    tests: { file: "tests/testthat/test_toOrdinal_swedish.R", covers: "0-40, 101, 102, 111, 112, negative input" }
+    added: { version: "0.0-3", by: "Jeff Erickson", at: "NEWS.md:43" }
+  - name: TURKISH
+    ordinal_number: { rule: "always '.'", at: "R/toOrdinal_Utility_Functions.R:51" }
+    ordinal_word: { implemented: true, rule: "get_turkish_number_word(n) + turkish_ordinal_suffix(word); 1-999", at: "R/toOrdinal_Utility_Functions.R:85" }
+    tests: none
+    added: { version: "1.3-9.0", note: "commit 692e2d1 'Updating logic and adding Turkish' added TURKISH to supported_languages and the ordinal_word path; a TURKISH branch existed earlier but was not in the supported list", at: "R/toOrdinal_Utility_Functions.R:12" }
+
+date_languages:   # toOrdinalDate
+  value: [ENGLISH]
+  at: "R/toOrdinal_Utility_Functions.R:102"
+
+tests:
+  runner: { file: "tests/testthat.R", framework: testthat, edition: "2 (context() calls)" }
+  files:
+    - { file: "tests/testthat/test_toOrdinal_dutch.R", tests: 2 }
+    - { file: "tests/testthat/test_toOrdinal_english.R", tests: 2 }
+    - { file: "tests/testthat/test_toOrdinal_german.R", tests: 2 }
+    - { file: "tests/testthat/test_toOrdinal_swedish.R", tests: 3 }
+    - { file: "tests/testthat/test_toOrdinalDate_english.R", tests: 1 }
+  untested: [FRENCH, GERMAN_ALT, SPANISH, TURKISH, "convert_to = 'ordinal_word'", "toOrdinalDate(NULL)", "non-English toOrdinalDate"]
+
+documentation:
+  rd:
+    - { file: "man/toOrdinal.Rd", topic: toOrdinal }
+    - { file: "man/toOrdinalDate.Rd", topic: toOrdinalDate }
+    - { file: "man/toOrdinal-package.Rd", topic: toOrdinal-package }
+  vignettes:
+    - { file: "vignettes/toOrdinal.Rmd", title: "Getting started with toOrdinal", at: "vignettes/toOrdinal.Rmd:2" }
+  release_notes:   # excluded from the build by .Rbuildignore:6; rendered on the site
+    - { file: "vignettes/releases/toOrdinal-0.0-1.Rmd", dated: "March 12th, 2015" }
+    - { file: "vignettes/releases/toOrdinal-1.0-0.0.Rmd", dated: "July 18th, 2017" }
+    - { file: "vignettes/releases/toOrdinal-1.1-0.0.Rmd", dated: "February 21st, 2019" }
+    - { file: "vignettes/releases/toOrdinal-1.2-0.0.Rmd", dated: "December 18th, 2020" }
+    - { file: "vignettes/releases/toOrdinal-1.3-0.0.Rmd", dated: "May 25th, 2022" }
+  readme: { file: "README.md", note: "not in the build (.Rbuildignore:4); devel badge says 1.3-1.0", at: "README.md:6" }
+  citation: { file: "inst/CITATION", year: "2024", version: "1.3-9.1", at: "inst/CITATION:7" }
+  news: { file: "NEWS.md", copy: "inst/NEWS (identical)" }
+
+history:
+  first_commit: { sha: a4f2dbd, date: 2015-03-05 }
+  commits_on_master: 170
+  versions_in_git:   # first commit where DESCRIPTION carries each Version
+    - { version: "0.0-1", sha: 2a2ef72, date: 2015-03-05 }
+    - { version: "0.0-2", sha: bae47b1, date: 2015-03-13 }
+    - { version: "0.0-3", sha: 4c0c484, date: 2015-03-29 }
+    - { version: "0.0-5", sha: c148ab3, date: 2016-01-28 }
+    - { version: "0.0-6", sha: 352546d, date: 2016-03-06 }
+    - { version: "0.0-7", sha: 18c4ca5, date: 2016-03-09 }
+    - { version: "0.0-8", sha: 242cf40, date: 2017-06-20 }
+    - { version: "1.0-0.0", sha: 05f44d4, date: 2017-06-20 }
+    - { version: "1.1-0.0", sha: 12cea66, date: 2017-10-09 }
+    - { version: "1.2-0.0", sha: 512b653, date: 2020-12-18 }
+    - { version: "1.3-0.0", sha: a366143, date: 2022-04-13 }
+    - { version: "1.3-1.0", sha: df02ea0, date: 2022-12-07 }
+    - { version: "1.3-9.0", sha: 692e2d1, date: 2024-11-26 }
+    - { version: "1.3-9.1", sha: b7919d8, date: 2024-12-03 }
+  cran_releases:   # crandb.r-pkg.org timeline, read 2026-11-26
+    - { version: "0.0-1", published: 2015-03-12 }
+    - { version: "0.0-4", published: 2015-07-24 }
+    - { version: "0.0-6", published: 2016-03-06 }
+    - { version: "1.0-0.0", published: 2017-07-18 }
+    - { version: "1.1-0.0", published: 2019-02-24 }
+    - { version: "1.3-0.0", published: 2022-02-24 }
+    - { version: "1.4-0.0", published: 2026-02-06 }
+  news_entries:   # NEWS.md headings, newest first
+    - { version: "1.3-0.0", at: "NEWS.md:1" }
+    - { version: "1.2-0.0", at: "NEWS.md:6" }
+    - { version: "1.1-0.0", at: "NEWS.md:10", adds: "toOrdinalDate" }
+    - { version: "1.0-0.0", at: "NEWS.md:16" }
+    - { version: "0.0-8", at: "NEWS.md:20" }
+    - { version: "0.0-7", at: "NEWS.md:24", adds: "GERMAN_ALT; '0te'" }
+    - { version: "0.0-6", at: "NEWS.md:29" }
+    - { version: "0.0-5", at: "NEWS.md:33" }
+    - { version: "0.0-4", at: "NEWS.md:37" }
+    - { version: "0.0-3", at: "NEWS.md:41", adds: "Swedish" }
+    - { version: "0.0-2", at: "NEWS.md:45", adds: "language messages; ordinal word" }
+    - { version: "0.0-1", at: "NEWS.md:50" }
+  contributors_in_git_log: ["Damian Betebenner (163 commits, two author names)", "Jeff Erickson (3)", "almartin82 (2)", "huisman (1)"]
+  reverse_dependencies_on_cran:   # tools::package_dependencies(reverse = TRUE), read 2026-11-26
+    value: [Clustering, impactr, randomNames, SGP, smoothic]
+    field: "Imports or Suggests (none Depend)"
+
+# Gaps between the code and what the documentation says. Facts for the outline, not fixes.
+gaps:
+  - { what: "NEWS.md stops at 1.3-0.0; no entries for 1.3-1.0, 1.3-9.0 (Turkish), 1.3-9.1 or CRAN 1.4-0.0", at: "NEWS.md:1" }
+  - { what: "CRAN carries 1.4-0.0 (2026-02-06); no commit on this branch or upstream master has that version. The 1.4-0.0 source as published on CRAN differs from source_sha only in DESCRIPTION Version/Date, man/toOrdinal-package.Rd:14-15 and the date at R/zzz.R:35", at: "DESCRIPTION:2" }
+  - { what: "the vignette and README list five or six languages; the code supports eight (DUTCH, ENGLISH, FRENCH, GERMAN, GERMAN_ALT, SPANISH, SWEDISH, TURKISH)", at: "vignettes/toOrdinal.Rmd:63" }
+  - { what: "man/toOrdinal.Rd says 'Additional options planned include ordinal_word'; Turkish implements it", at: "man/toOrdinal.Rd:19" }
+  - { what: "man/toOrdinal.Rd says 'Postive integer'; the code accepts 0", at: "man/toOrdinal.Rd:14" }
+  - { what: "man/toOrdinalDate.Rd and the vignette say date = NULL gives today's date; sapply over NULL returns list(), so the Sys.time() branch is never reached through the export", at: "man/toOrdinalDate.Rd:13" }
+  - { what: "README shows Spanish 5 -> '5.º'; the code returns '5..º'", at: "README.md:57" }
+
+# Behaviour probes: Rscript --vanilla, sourcing R/toOrdinal.R, R/toOrdinalDate.R and
+# R/toOrdinal_Utility_Functions.R at source_sha (no install, so .onAttach did not run).
+# Inputs and outputs copied from the console. Which of these are bugs and which are
+# stated assumptions is the maintainer's call; the outline asks it.
+observations:
+  - { input: 'toOrdinal(c(1, 2, 3, 11, 21), "Spanish")', output: '"1.er" "2..º" "3.er" "11.er" "21.er"', at: "R/toOrdinal_Utility_Functions.R:44" }
+  - { input: 'toOrdinal(2, "Turkish", "ordinal_word")', output: '"ikiinci"', note: "vowel-final words keep the suffix's first vowel (also altııncı, yirmiinci, elliinci)", at: "R/toOrdinal_Utility_Functions.R:87" }
+  - { input: 'toOrdinal(11, "Turkish", "ordinal_word")', output: "error: infinite recursion", note: "any n whose remainder below 100 is not in the table (11-19, 21-29, ..., 999) recurses with hundreds = '0'", at: "R/toOrdinal_Utility_Functions.R:159" }
+  - { input: 'toOrdinal(0, "Turkish", "ordinal_word")', output: "error: argument is of length zero", at: "R/toOrdinal_Utility_Functions.R:174" }
+  - { input: 'toOrdinal(1, "English", "foo")', output: "list(NULL)", note: "an unknown convert_to returns NULL silently", at: "R/toOrdinal_Utility_Functions.R:92" }
+  - { input: 'toOrdinal("3")', output: "error: non-numeric argument to mathematical function", at: "R/toOrdinal_Utility_Functions.R:8" }
+  - { input: "toOrdinal(NA)", output: "error: missing value where TRUE/FALSE needed", at: "R/toOrdinal_Utility_Functions.R:8" }
+  - { input: "toOrdinal(1e6)", output: '"1e+06th"', note: "as.character() of a large double", at: "R/toOrdinal_Utility_Functions.R:33" }
+  - { input: "toOrdinalDate()", output: "list()", at: "R/toOrdinalDate.R:6" }
+  - { input: 'toOrdinalDate("2017-10-09", "German")', output: "list(NULL)", at: "R/toOrdinal_Utility_Functions.R:107" }
+  - { input: 'toOrdinalDate(as.Date("2017-10-09"))', output: '"October 9th, 2017"', at: "R/toOrdinal_Utility_Functions.R:104" }
